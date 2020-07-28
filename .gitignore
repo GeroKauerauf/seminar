@@ -1,6 +1,9 @@
 # Created by https://www.gitignore.io/api/vscode,tex
 # Edit at https://www.gitignore.io/?templates=vscode,tex
 
+### Mac ###
+*.DS_Store
+
 ### TeX ###
 ## Core latex/pdflatex auxiliary files:
 *.aux
