@@ -13,6 +13,11 @@
 % Also force Arial for math for a more consistent look
 \usepackage{unicode-math}
 
+% https://tex.stackexchange.com/questions/426088/texlive-pretest-2018-beamer-and-subfig-collide
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+
 % German style date formatting (footer)
 \usepackage[ddmmyyyy]{datetime}
 \renewcommand{\dateseparator}{.}
