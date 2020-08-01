@@ -42,19 +42,63 @@
 \logo{\includegraphics{logo.png}}
 
 % Setup presentation information
-\title{Seminar Topic}
-\date{Date}
-\author{Authors}
+\title{Back-Propagation and Algorithms for Training Artificial Neural Networks with TensorFlow}
+\date{26.-30. October 2020}
+\author{Gero Kauerauf}
 
 \frame{\titlepage}
 
-\section{Title of Slide}
-
-% Frame with items
+\section{List of Contents}
 \begin{frame}
-\begin{itemize}
-\item Contents
-\end{itemize}
+    \begin{itemize}
+        \item Introduction
+    \end{itemize}
+\end{frame}
+
+
+\section{Introduction}
+\begin{frame}
+    \begin{itemize}
+        \item What is a complicated problem for a computer?
+        \item Deep Learning
+        \begin{itemize}
+            \item Hierarchy of Concepts
+            \item Representative Graph has Layers
+        \end{itemize}
+        \item Machine Learning
+        \begin{itemize}
+            \item Acquiring its own knowledge
+            \item Extracting patterns from data
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{itemize}
+        \item Importance of Data Representation
+        \begin{itemize}
+            \item Tasks can be impossible in one representation and easy in another
+            
+            \begin{figure}
+                \centering
+                \begin{minipage}{0.45\textwidth}
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{cartesian.pdf} % first figure itself
+                \end{minipage}\hfill
+                \begin{minipage}{0.45\textwidth}
+                    \centering
+                    \includegraphics[width=0.9\textwidth]{polar.pdf} % second figure itself
+                \end{minipage}
+            \end{figure}
+
+            \item One solution to this is \textbf{representation learning}
+            \begin{itemize}
+                \item Machine Learning now also discovers the representation itself
+                \item Often better Performance
+                \item AI can rapidly adapt to new tasks with minimal human intervention
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
 \end{frame}
 
 \end{document}
