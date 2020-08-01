@@ -4,6 +4,14 @@
 ### Mac ###
 *.DS_Store
 
+### Excluded Files ###
+# For example plots in PDF-Format
+
+# data-representation-difference.py
+!polar.pdf
+!cartesian.pdf
+
+
 ### TeX ###
 ## Core latex/pdflatex auxiliary files:
 *.aux
