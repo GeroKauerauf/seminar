@@ -7,4 +7,3 @@
 
 **About this**
 - It is mandatory for each and every student to write a seminar work at one chair
-- Therefore I am writing mine at the i12 STCE

@@ -37,6 +37,18 @@
 % as it requires some specific dimensions
 \usetheme{rwth}
 
+
+
+% ---------------- My Stuff ---------------- %
+% ---------- Hyperref ---------- %
+\usepackage{hyperref}
+\hypersetup{colorlinks,breaklinks,
+            urlcolor=[rgb]{0,0.2,0.4},
+            linkcolor=[rgb]{0,0.2,0.4}}
+\def\UrlBreaks{\do\/\do-}
+% Farbe ist darkmidnightblue
+% ---------- -------- ---------- %
+
 \begin{document}
 
 \logo{\includegraphics{logo.png}}
@@ -60,6 +72,12 @@
 \begin{frame}
     \begin{itemize}
         \item What is a complicated problem for a computer?
+        \item A problems that is
+        \begin{itemize}
+            \item hard to describe formally
+            \item intuitive solvable for humans
+        \end{itemize}
+        \item For example: Recognizing a flower on a picture
         \item Deep Learning
         \begin{itemize}
             \item Hierarchy of Concepts
@@ -73,6 +91,7 @@
     \end{itemize}
 \end{frame}
 
+\section{Data Representation}
 \begin{frame}
     \begin{itemize}
         \item Importance of Data Representation
@@ -83,11 +102,11 @@
                 \centering
                 \begin{minipage}{0.45\textwidth}
                     \centering
-                    \includegraphics[width=0.9\textwidth]{cartesian.pdf} % first figure itself
+                    \includegraphics[width=0.9\textwidth]{../plots/cartesian.pdf} % first figure itself
                 \end{minipage}\hfill
                 \begin{minipage}{0.45\textwidth}
                     \centering
-                    \includegraphics[width=0.9\textwidth]{polar.pdf} % second figure itself
+                    \includegraphics[width=0.9\textwidth]{../plots/polar.pdf} % second figure itself
                 \end{minipage}
             \end{figure}
 
@@ -98,6 +117,31 @@
                 \item AI can rapidly adapt to new tasks with minimal human intervention
             \end{itemize}
         \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Different AI disciplines}
+\begin{frame}
+    \begin{itemize}
+        \item Relations between different AI disciplines
+        \begin{figure}
+            %\centering
+            \begin{minipage}{0.45\textwidth}
+                \begin{figure}[]
+                    \centering
+                    \includegraphics[width=\textwidth]{../plots/ai-venn.pdf}
+                    %\caption{\href{http://www.deeplearningbook.org}{www.DeepLearningBook.org}}
+                \end{figure}
+            \end{minipage}\hfill
+            \begin{minipage}{0.45\textwidth}
+                \begin{figure}[]
+                    \centering
+                    \includegraphics[width=\textwidth]{../plots/ai-flowchart.pdf}
+                    %\caption{\href{http://www.deeplearningbook.org}{www.DeepLearningBook.org}}
+                \end{figure}
+            \end{minipage}
+            \caption{\href{http://www.deeplearningbook.org}{www.DeepLearningBook.org}}
+        \end{figure}
     \end{itemize}
 \end{frame}
 

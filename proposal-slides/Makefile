@@ -1,6 +1,6 @@
 slides.pdf : slides.tex
-	xelatex $< -o$@
-	xelatex $< -o$@
+	lualatex $< -o$@
+	lualatex $< -o$@
 
 clean: 
 	rm -f *.log *.toc *.aux slides.pdf *.snm *.nav *.out
