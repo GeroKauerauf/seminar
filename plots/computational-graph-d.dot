@@ -1,0 +1,23 @@
+digraph G {
+    rankdir = BT;
+
+    {
+        node [shape=circle,style="filled", color=black, fillcolor=yellow, fillcolor=yellow]
+        x [label="x", pos="0,0"]
+        w [label="w", pos="100,0"]
+        lambda [label="&#955;", pos="200,0"]
+        u1 [label=<u<sup>(1)</sup>>, xlabel="sqr", pos="100,100"]
+        u2 [label=<u<sup>(2)</sup>>, xlabel="sum", pos="100,200"]
+        u3 [label=<u<sup>(3)</sup>>, xlabel="&#215;", pos="200,200"]
+        y [label="&#375;", xlabel="dot", pos="0,100"]
+    }
+    x -> y
+    w -> y
+    w -> u1
+    u1 -> u2
+    u2 -> u3
+    lambda -> u3
+}
+# This computational graph computes dz/dx_i = sum_j (dz/dy_j * dy_j/dx_i) <=> ∇_x z = (dy/dx)^T * ∇_y z
+# Use this to compile:
+# neato -n2 -Tpdf computational-graph-d.dot > computational-graph-d.pdf

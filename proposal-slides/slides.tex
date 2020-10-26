@@ -55,16 +55,22 @@
 
 % Setup presentation information
 \title{Back-Propagation and Algorithms for Training Artificial Neural Networks with TensorFlow}
-\date{26.-30. October 2020}
+\date{30. October 2020}
 \author{Gero Kauerauf}
 
 \frame{\titlepage}
 
 \section{List of Contents}
 \begin{frame}
-    \begin{itemize}
-        \item Introduction
-    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{itemize}
+            \item Introduction
+            \item Data Representation
+            \item AI Disciplines
+            \item Deep Neural Networks
+        \end{itemize}
+    \end{figure}
 \end{frame}
 
 
@@ -143,6 +149,125 @@
             \caption{\href{http://www.deeplearningbook.org}{www.DeepLearningBook.org}}
         \end{figure}
     \end{itemize}
+\end{frame}
+
+\section{Neural Networks}
+
+\begin{frame}
+    \begin{itemize}
+        \item An Neural Network consists out of vertices (nodes) and edges
+        \item Vertices are modeling Neurons
+        \item Edges are modeling synapses
+        \item Vertices have an activations function (e.g. a rectifier function)
+        \item Each edges has a weights to it
+    \end{itemize}
+
+    \begin{itemize}
+        \item How it works:
+        \begin{itemize}
+            \item Input nodes are given an input value
+            \item Each nodes in the sums up the inputs that it gets and outputs the activation function value of that sum
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.8\textwidth]{../plots/activation.pdf}   
+    \end{figure}
+    \begin{itemize}
+        \item Where \(x^T * w + b\) is nothing but \(\sum^{3}_{i=1}(x_i * w_i) + b\)
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{itemize}
+        \item A deep neural network consists out of
+        \begin{itemize}
+            \item an input layer
+            \item multiple hidden layers
+            \item an output layer
+        \end{itemize}
+        \begin{figure}
+            \centering
+            \includegraphics[width=0.9\textwidth]{../plots/nn-2-crop.pdf}
+        \end{figure}
+    \end{itemize}
+\end{frame}
+
+\section{Linear Algebra}
+\begin{frame}
+    \begin{itemize}
+        \item Nothing but linear algebra
+        \item All operations can easily be described with vectors and matrices \\
+        \item We can describe the weights of the DNN with an weight matrix
+        \item The input can be written as an vector, same for the biases
+        \item Thus propagating through the network is simply a (scalar-) multiplication of a vector and a column of the matrix plus the corresponding bias
+    \end{itemize}
+\end{frame}
+
+\section{Computational Graphs}
+\begin{frame}
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.45\textwidth}
+            \begin{figure}[]
+                \centering
+                \includegraphics[width=0.5\textwidth]{../plots/computational-graph-c-crop.pdf}
+            \end{figure}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \begin{figure}[]
+                \includegraphics[width=0.45\textwidth]{../plots/computational-graph-b-crop.pdf}
+            \end{figure}
+        \end{minipage}
+        \caption{\href{http://www.deeplearningbook.org}{www.DeepLearningBook.org}}
+    \end{figure}
+    \begin{itemize}
+        \item A computational graph is used to describe a mathematical expression as an graph
+        \item This allows us to apply \emph{graph algorithms} on it
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.45\textwidth}
+            \begin{figure}[]
+                \centering
+                \includegraphics[width=0.7\textwidth]{../plots/computational-graph-c-crop.pdf}
+            \end{figure}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \begin{itemize}
+                \item First we compute \(XW\), that we store in \(U^{(1)}\)
+                \item Then we calculate \(U^{(2)} = U^{(1)} + b \; \Leftrightarrow \; U^{(2)} = XW + b\)
+                \item Finally ReLU refers to \emph{rectifier linear unit}
+                \item \(\rightarrow f(x) = max\{0, x\} = \vert x\vert\) \\
+                \item This computational graph computes \(H = max\{0, XW + b\}\)
+            \end{itemize}
+        \end{minipage}
+        \caption{\href{http://www.deeplearningbook.org}{www.DeepLearningBook.org}}
+    \end{figure}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.45\textwidth}
+            \begin{itemize}
+                \item This one here computes \(\hat{y} = \sigma (x^T w + b)\)
+            \end{itemize}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \centering
+            \begin{figure}[]
+                \includegraphics[width=0.6\textwidth]{../plots/computational-graph-b-crop.pdf}
+            \end{figure}
+        \end{minipage}
+    \end{figure}
 \end{frame}
 
 \end{document}

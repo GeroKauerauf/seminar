@@ -1,0 +1,19 @@
+digraph G {
+    rankdir = BT;
+
+    {
+        node [shape=circle,style="filled", color=black, fillcolor=yellow, fillcolor=yellow]
+        X [label="X"]
+        W [label="w"]
+        b [label="b"]
+        U1 [label=<U<sup>(1)</sup>>, xlabel="matmul"]
+        U2 [label=<U<sup>(2)</sup>>, xlabel="+"]
+        H [label="H", xlabel="relu"]
+    }
+    X -> U1
+    W -> U1
+    U1 -> U2
+    U2 -> H
+    b -> U2 
+}
+# This computational graph computes y = sigma * (x^T * w + b)
