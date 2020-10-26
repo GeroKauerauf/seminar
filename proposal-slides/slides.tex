@@ -48,6 +48,7 @@
 \def\UrlBreaks{\do\/\do-}
 % Farbe ist darkmidnightblue
 % ---------- -------- ---------- %
+\usepackage{csquotes}
 
 \begin{document}
 
@@ -268,6 +269,18 @@
             \end{figure}
         \end{minipage}
     \end{figure}
+\end{frame}
+
+\section{Back-Propagation}
+\begin{frame}
+    \begin{itemize}
+        \item Back-Propagation is a \enquote{graph algorithm} that we can use to compute the the gradient of a graph
+        \item Backpropagation is the recursive usage of the \emph{Chain-Rule} to obtain the gradient \\
+        \item We can now define a cost function for a DNN
+        \item For that cost function we can find the respective computational graph
+        \item We can use the Back-Propagation to find the gradient of the cost function
+        \item And then find the minimum of the gradient of the cost function via \emph{Stochastic Gradient Descent} (SGD) an extension of the normal \emph{Gradient Descent}, which is an iterative algorithm for finding a local minimum
+    \end{itemize}
 \end{frame}
 
 \end{document}
