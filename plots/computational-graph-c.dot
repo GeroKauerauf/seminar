@@ -4,7 +4,7 @@ digraph G {
     {
         node [shape=circle,style="filled", color=black, fillcolor=yellow, fillcolor=yellow]
         X [label="X"]
-        W [label="w"]
+        W [label="W"]
         b [label="b"]
         U1 [label=<U<sup>(1)</sup>>, xlabel="matmul"]
         U2 [label=<U<sup>(2)</sup>>, xlabel="+"]

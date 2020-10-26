@@ -3,7 +3,7 @@ digraph G {
 
     {
         node [shape=circle,style="filled", color=black, fillcolor=yellow, fillcolor=yellow]
-        x [label="w"]
+        x [label="x"]
         w [label="w"]
         b [label="b"]
         u1 [label=<u<sup>(1)</sup>>, xlabel="dot"]
