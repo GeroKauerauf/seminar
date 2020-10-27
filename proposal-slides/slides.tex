@@ -206,9 +206,9 @@
     \begin{itemize}[<+->]
         \item Nothing but linear algebra
         \item All operations can easily be described with vectors and matrices \\
-        \item We can describe the weights of the DNN with a weight matrix
+        \item We can describe the weights of each layer of the DNN with a weight matrix
         \item The input can be written as a vector, same goes for the biases
-        \item Thus propagating through the network is simply a (scalar-) multiplication of a vector and a column of the matrix plus the corresponding bias
+        \item Thus propagating through the network is simply a matrix-vector multiplication plus the corresponding bias foreach layer
     \end{itemize}
 \end{frame}
 
