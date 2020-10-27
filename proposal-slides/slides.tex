@@ -69,7 +69,11 @@
             \item Introduction
             \item Data Representation
             \item AI Disciplines
-            \item Deep Neural Networks
+            \item Neural Networks
+            \item Linear Algebra
+            \item Computational Graphs
+            \item Back-Propagation
+            \item Sources
         \end{itemize}
     \end{figure}
 \end{frame}
@@ -156,18 +160,18 @@
 
 \begin{frame}
     \begin{itemize}
-        \item An Neural Network consists out of vertices (nodes) and edges
-        \item Vertices are modeling Neurons
+        \item An Neural Network consists out of nodes (vertices) and edges
+        \item Nodes are modeling Neurons
         \item Edges are modeling synapses
-        \item Vertices have an activations function (e.g. a rectifier function)
-        \item Each edges has a weights to it
+        \item Nodes have an activations function (e.g. a rectifier function)
+        \item The graph is weighted, that means each edge has a weight to it (\(w \in [0, 1]\))
     \end{itemize}
 
     \begin{itemize}
         \item How it works:
         \begin{itemize}
             \item Input nodes are given an input value
-            \item Each nodes in the sums up the inputs that it gets and outputs the activation function value of that sum
+            \item Each node sums up the inputs that it gets and outputs the activation function value of that sum
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -202,8 +206,8 @@
     \begin{itemize}
         \item Nothing but linear algebra
         \item All operations can easily be described with vectors and matrices \\
-        \item We can describe the weights of the DNN with an weight matrix
-        \item The input can be written as an vector, same for the biases
+        \item We can describe the weights of the DNN with a weight matrix
+        \item The input can be written as a vector, same goes for the biases
         \item Thus propagating through the network is simply a (scalar-) multiplication of a vector and a column of the matrix plus the corresponding bias
     \end{itemize}
 \end{frame}
@@ -227,7 +231,7 @@
         \caption{\href{http://www.deeplearningbook.org}{www.DeepLearningBook.org}}
     \end{figure}
     \begin{itemize}
-        \item A computational graph is used to describe a mathematical expression as an graph
+        \item A computational graph is used to describe a mathematical expression as a graph
         \item This allows us to apply \emph{graph algorithms} on it
     \end{itemize}
 \end{frame}
@@ -280,6 +284,28 @@
         \item For that cost function we can find the respective computational graph
         \item We can use the Back-Propagation to find the gradient of the cost function
         \item And then find the minimum of the gradient of the cost function via \emph{Stochastic Gradient Descent} (SGD) an extension of the normal \emph{Gradient Descent}, which is an iterative algorithm for finding a local minimum
+    \end{itemize}
+\end{frame}
+
+\section{Sources}
+\begin{frame}
+    \begin{itemize}
+        \item Sources:
+        \begin{itemize}
+            \item \textbf{Deep Learning} by Ian Goodfellow and Yoshua Bengio and Aaron Courville \\
+            \href{https://www.deeplearningbook.org}{www.deeplearningbook.org}
+            \item \textbf{TensorFlow} \\
+            \href{https://www.tensorflow.org}{www.tensorflow.org} \\
+
+            \item And of course wikipedia for quick look ups
+        \end{itemize}
+        \item Tools used:
+        \begin{itemize}
+            \item \textbf{Graphviz} for plotting computational graphs \\
+            \href{https://graphviz.org}{www.graphviz.org}
+            \item \textbf{matplotlib} for more plots \\
+            \href{https://matplotlib.org}{www.matplotlib.org}
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
