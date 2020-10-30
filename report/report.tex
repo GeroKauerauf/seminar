@@ -1,0 +1,67 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.20 of 2017/10/04
+%
+\documentclass[runningheads]{llncs}
+%
+\makeatletter
+\usepackage[algoruled,boxed,lined]{algorithm2e}
+\makeatletter
+\g@addto@macro{\@algocf@init}{\SetKwInOut{Parameter}{Parameters}}
+\makeatother
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
+
+\begin{document}
+%
+\title{Seminar Topic}
+%
+%\titlerunning{Abbreviated paper title}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+%
+\author{Author\inst{1}}
+%
+\authorrunning{Author}
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+%
+\institute{RWTH Aachen University \email{author@rwth-aachen.de}} 
+%
+\maketitle              % typeset the header of the contribution
+%
+\begin{abstract}
+abstract
+\keywords{keywords}
+\end{abstract}
+%
+%
+%
+\section{Problem Description}
+
+Sample citation: \cite{gelman2013bayesian}.
+
+See Springer website\footnote{\url{https://www.springer.com/gp/computer-science/lncs/conference-proceedings-guidelines}.} for further inforamtion on the \LaTeX style.
+\section{State of the Art}
+
+
+\section{Contribution}
+
+\section{Conclusion}
+
+%
+% ---- Bibliography ----
+%
+% BibTeX users should specify bibliography style 'splncs04'.
+% References will then be sorted and formatted in the correct style.
+%
+\bibliographystyle{splncs04}
+\bibliography{refs}
+\end{document}
