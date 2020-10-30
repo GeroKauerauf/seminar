@@ -3,7 +3,8 @@
 % 12.11.2014: Revision 1 (Harold Bruintjes, Tim Lange)
 
 % For RWTH, beamer should be loaded with class option t (top)
-\documentclass[t]{beamer} % use [handout] instead of [t] for handout
+% \documentclass[t]{beamer} % use [handout] instead of [t] for handout
+\documentclass[handout]{beamer}
 
 % Use fontspec to get Arial font
 % Requires use of XeLaTeX
@@ -89,15 +90,15 @@
             \item intuitive solvable for humans
         \end{itemize}
         \item For example: Recognizing a flower on a picture
-        \item Deep Learning
-        \begin{itemize}[<+->]
-            \item Hierarchy of Concepts
-            \item Representative Graph has Layers
-        \end{itemize}
         \item Machine Learning
         \begin{itemize}[<+->]
             \item Acquiring its own knowledge
             \item Extracting patterns from data
+        \end{itemize}
+        \item Deep Learning
+        \begin{itemize}[<+->]
+            \item Hierarchy of Concepts
+            \item Representative Graph has Layers
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -305,6 +306,29 @@
             \href{https://graphviz.org}{www.graphviz.org}
             \item \textbf{matplotlib} for more plots \newline
             \href{https://matplotlib.org}{www.matplotlib.org}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Workplan}
+\begin{frame}
+    \begin{itemize}
+        \item Topics as discussed:
+        \begin{itemize}
+            \item Back-Propagation
+            \begin{itemize}
+                \item How does Back-Propagation calculate the gradient
+                \item Cost functions of Neural Networks 
+            \end{itemize}
+            \item (Stochastic-) Gradient Descent
+            \begin{itemize}
+                \item Gradient Descent
+                \item Especially Stochastic Gradient Descent
+            \end{itemize}
+            \item Neural Networks in TensorFlow
+            \begin{itemize}
+                \item Different models in TensorFlow (Keras)
+            \end{itemize}
         \end{itemize}
     \end{itemize}
 \end{frame}
