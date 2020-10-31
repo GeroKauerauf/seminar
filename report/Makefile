@@ -1,8 +1,8 @@
 report.pdf : report.tex
-	xelatex report
+	lualatex report
 	bibtex report
-	xelatex report
-	xelatex report
+	lualatex report
+	lualatex report
 
 clean: 
 	rm -f *.log *.toc *.aux report.pdf *.snm *.nav *.out *.bbl *.blg
