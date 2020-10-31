@@ -12,28 +12,85 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{graphicx}
+
+% -------------------- My Packages -------------------- %
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
+
+%---------- Ich bin ein verdammter Künstler ----------
+\usepackage{listings}
+\definecolor{maroon}{RGB}{128, 0, 0}
+\definecolor{pinegreen}{RGB}{1, 121, 111}
+\definecolor{darkmidnightblue}{RGB}{0, 51, 102}
+\definecolor{rwthblue}{RGB}{0, 84, 159}
+% www.colorhexa.com for color references
+
+% Quiet Light
+\definecolor{background}{HTML}{f5f5f5}
+\definecolor{keyword}{HTML}{4b83cd}
+\definecolor{constant}{HTML}{ab6526}
+\definecolor{function}{HTML}{aa3731} % bold
+\definecolor{comment}{HTML}{aaaaaa} % italic
+\definecolor{string}{HTML}{448c27}
+
+\lstset{
+    language=python,
+    commentstyle=\color{comment}\textit,
+    keywordstyle=\color{keyword},
+    stringstyle=\color{string},
+    frame=tb,
+    keepspaces=true,
+    stepnumber=2,
+    showstringspaces=false,
+    tabsize=2
+}
+
+% ---------- Hyperref -----------
+\hypersetup{colorlinks,breaklinks,
+            urlcolor=rwthblue,
+            linkcolor=rwthblue}
+\def\UrlBreaks{\do\/\do-}
+% -------------------------------
+
+% ------------------ End My Packages ------------------ %
+
 % Used for displaying a sample figure. If possible, figure files should
 % be included in EPS format.
 %
 % If you use the hyperref package, please uncomment the following line
 % to display URLs in blue roman font according to Springer's eBook style:
 % \renewcommand\UrlFont{\color{blue}\rmfamily}
+% I don't really care.
+\renewcommand\UrlFont{\rmfamily}
+
 
 \begin{document}
+% Load Python Syntax-Coloring
+\lstloadlanguages{Python}
+\lstset{
+    basicstyle=\small,
+    numbers=left,
+    numberstyle=\footnotesize,
+    stepnumber=1,
+    numbersep=5pt,
+    breaklines=true,
+    escapeinside={/*@}{@*/}}
+
 %
 \title{Back-Propagation and Algorithms for Training Artificial Neural Networks with TensorFlow}
 %
-%\titlerunning{Abbreviated paper title}
+\titlerunning{Back-Propagation and Algorithms for Artificial Neural Networks}
 % If the paper title is too long for the running head, you can set
 % an abbreviated paper title here
 %
 \author{Gero Kauerauf\inst{1}}
 %
-\authorrunning{Author}
+\authorrunning{Kauerauf}
 % First names are abbreviated in the running head.
 % If there are more than two authors, 'et al.' is used.
 %
-\institute{RWTH Aachen University \email{gero.kauerauf@rwth-aachen.de}} 
+\institute{RWTH Aachen University \email{} \href{https://github.com/gerokauerauf/seminar}{GitHub.com/GeroKauerauf/seminar}} 
 %
 \maketitle              % typeset the header of the contribution
 %
@@ -64,4 +121,12 @@ See Springer website\footnote{\url{https://www.springer.com/gp/computer-science/
 %
 \bibliographystyle{splncs04}
 \bibliography{refs}
+
+\newpage
+
+\section{Testerino}
+jaja kleiner Test
+
+\lstinputlisting[language=Python]{python-code.py}
+
 \end{document}
