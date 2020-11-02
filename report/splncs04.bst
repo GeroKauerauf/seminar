@@ -1500,7 +1500,7 @@ FUNCTION {presort}
   #1 entry.max$ substring$
   'sort.key$ :=
 }
-ITERATE {presort}
+% ITERATE {presort} % Who thought that you wanted to have them sorted alphabetically and not by appearance!
 SORT
 STRINGS { longest.label }
 INTEGERS { number.label longest.label.width }
