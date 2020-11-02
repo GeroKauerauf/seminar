@@ -18,6 +18,10 @@
 \usepackage{xcolor}
 \usepackage[utf8]{inputenc}
 
+\usepackage{fontspec}
+\setmonofont{Roboto Mono}
+\usepackage{minted}
+
 %---------- Ich bin ein verdammter Künstler ----------
 \usepackage{listings}
 \definecolor{maroon}{RGB}{128, 0, 0}
@@ -34,22 +38,12 @@
 \definecolor{comment}{HTML}{aaaaaa} % italic
 \definecolor{string}{HTML}{448c27}
 
-\lstset{
-    language=python,
-    commentstyle=\color{comment}\textit,
-    keywordstyle=\color{keyword},
-    stringstyle=\color{string},
-    frame=tb,
-    keepspaces=true,
-    stepnumber=2,
-    showstringspaces=false,
-    tabsize=2
-}
-
 % ---------- Hyperref -----------
-\hypersetup{colorlinks,breaklinks,
+\hypersetup{colorlinks=true,
+            breaklinks=true,
             urlcolor=rwthblue,
-            linkcolor=rwthblue}
+            linkcolor=rwthblue,
+            citecolor=rwthblue}
 \def\UrlBreaks{\do\/\do-}
 % -------------------------------
 
@@ -66,17 +60,6 @@
 
 
 \begin{document}
-% Load Python Syntax-Coloring
-\lstloadlanguages{Python}
-\lstset{
-    basicstyle=\small,
-    numbers=left,
-    numberstyle=\footnotesize,
-    stepnumber=1,
-    numbersep=5pt,
-    breaklines=true,
-    escapeinside={/*@}{@*/}}
-
 %
 \title{Back-Propagation and Algorithms for Training Artificial Neural Networks with TensorFlow}
 %
@@ -84,9 +67,9 @@
 % If the paper title is too long for the running head, you can set
 % an abbreviated paper title here
 %
-\author{Gero Kauerauf\inst{1}}
+\author{Gero F. Kauerauf}
 %
-\authorrunning{Kauerauf}
+\authorrunning{G. F. Kauerauf}
 % First names are abbreviated in the running head.
 % If there are more than two authors, 'et al.' is used.
 %
@@ -111,6 +94,24 @@ See Springer website\footnote{\url{https://www.springer.com/gp/computer-science/
 
 \section{Contribution}
 
+jaja kleiner Test
+
+\begin{minted}[mathescape,
+            breaklines,
+            linenos=true,
+            numbersep=5pt,
+            frame=lines,
+            framesep=2mm,
+            fontsize=\small]{csharp}
+string title = "This is a Unicode π in the sky"
+/*
+Defined as $\pi=\lim_{n\to\infty}\frac{P_n}{d}$ where $P$ is the perimeter
+of an $n$-sided regular polygon circumscribing a
+circle of diameter $d$.
+*/
+const double pi = 3.1415926535
+\end{minted}
+
 \section{Conclusion}
 
 %
@@ -121,12 +122,5 @@ See Springer website\footnote{\url{https://www.springer.com/gp/computer-science/
 %
 \bibliographystyle{splncs04}
 \bibliography{refs}
-
-\newpage
-
-\section{Testerino}
-jaja kleiner Test
-
-\lstinputlisting[language=Python]{python-code.py}
 
 \end{document}
