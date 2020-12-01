@@ -37,24 +37,101 @@
 % as it requires some specific dimensions
 \usetheme{rwth}
 
-\begin{document}
+% -------------------- My Packages -------------------- %
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage[utf8]{inputenc}
 
+% \usepackage{fontspec}
+\setmonofont{Roboto Mono}
+\usepackage{minted}
+
+%---------- Ich bin ein verdammter Künstler ----------
+\usepackage{listings}
+\definecolor{maroon}{RGB}{128, 0, 0}
+\definecolor{pinegreen}{RGB}{1, 121, 111}
+\definecolor{darkmidnightblue}{RGB}{0, 51, 102}
+\definecolor{rwthblue}{RGB}{0, 84, 159}
+% www.colorhexa.com for color references
+
+% ---------- Hyperref -----------
+\hypersetup{colorlinks=true,
+            breaklinks=true,
+            urlcolor=rwthblue,
+            linkcolor=rwthblue,
+            citecolor=rwthblue}
+\def\UrlBreaks{\do\/\do-}
+% -------------------------------
+
+
+\begin{document}
 \logo{\includegraphics{logo.png}}
 
 % Setup presentation information
-\title{Seminar Topic}
-\date{Date}
-\author{Authors}
+\title{Back-Propagation and Algorithms for Training Artificial Neural Networks with TensorFlow}
+\date{10. Dezember 2020}
+\author{Gero Kauerauf}
 
 \frame{\titlepage}
 
-\section{Title of Slide}
-
+\section{Überblick}
 % Frame with items
 \begin{frame}
-\begin{itemize}
-\item Contents
-\end{itemize}
+    \begin{itemize}
+        \item Bildklassifizierung mit TensorFlow.Keras
+        \begin{itemize}
+            \item Was soll unser Modell können?
+            \item Unser Datensatz
+            \item Konstruktion unseres Python-Programms
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Was soll unser Modell können?}
+\begin{frame}
+    \begin{itemize}
+        \item Wir möchten ein Modell, welches unterschiedliche Blumen erkennen kann
+        \item Wir haben eine Sammlung an von Menschen klassifizierten Bildern von Blumen
+        \includegraphics[width=0.5\textwidth]{teach-plots/flower-photos}
+        \item Enthalten sind Bilder von Gänseblümchen, Löwenzahn, Rosen, Sonnenblumen und Tuplen
+        \item Mit diesem Datensatz können wir ein Modell bauen, welches zwischen genau diesen unterscheiden kann
+    \end{itemize}
+\end{frame}
+
+\section{Der Datensatz}
+\begin{frame}
+    \begin{itemize}
+        \item Hier ein kleiner Einblick in unseren Datensatz
+    \end{itemize}
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{./teach-plots/dandelion.jpg} % first figure itself
+        \end{minipage}\hfill
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            \includegraphics[width=0.5\textwidth]{./teach-plots/rose.jpg} % second figure itself
+        \end{minipage}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            \includegraphics[width=0.8\textwidth]{./teach-plots/sunflower.jpg} % first figure itself
+        \end{minipage}\hfill
+        \begin{minipage}{0.4\textwidth}
+            \centering
+            \includegraphics[width=0.68\textwidth]{./teach-plots/tulip.jpg} % second figure itself
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+\section{Code}
+\begin{frame}
+    \begin{itemize}
+        \item ...
+    \end{itemize}
 \end{frame}
 
 \end{document}
