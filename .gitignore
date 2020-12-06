@@ -4,6 +4,12 @@
 ### Mac ###
 *.DS_Store
 
+### Ignore flower_photos and other stuff
+./teach/flower_photos/
+./teach/592px-Red_sunflower.jpg
+
+./teach/saved_model/
+
 ### Excluded Files ###
 # For example plots in PDF-Format
 
