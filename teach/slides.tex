@@ -152,4 +152,42 @@
     \end{itemize}
 \end{frame}
 
+\section{Leistungsoptimierung}
+\begin{frame}
+    \begin{itemize}
+        \item Wir werden nun zwei Methoden verwenden um das Laden der Daten beim Training zuverbessern
+        \item \texttt{Dataset.cache()}
+        \begin{itemize}
+            \item Geladene Bilder werden im RAM gelassen und nicht jedes mal erneut eingeladen
+        \end{itemize}
+        \item \texttt{Dataset.prefetch()}
+        \begin{itemize}
+            \item Datenvorverarbeitung und Modelltraining werden überlappt
+            \item Im \(i\)-ten Trainingsschritt werden die Daten für den den \(i+1\)-ten Schritt gelesen.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Leistungsoptimierung}
+\begin{frame}
+    \begin{itemize}
+        \item Ohne prefetching
+    \end{itemize}
+    \includegraphics[width=0.7\textwidth]{teach-plots/naive-prefetching-crop.pdf}
+    \begin{itemize}
+        \item Mit prefetching
+    \end{itemize}
+    \includegraphics[width=0.7\textwidth]{teach-plots/prefetched-crop.pdf}
+    \large\href{https://www.tensorflow.org/guide/data_performance}{https://www.tensorflow.org/guide/data\_performance}
+\end{frame}
+
+\section{Leistungsoptimierung}
+\begin{frame}
+    \begin{itemize}
+        \item Außerdem nutzen wir noch die experimentelle Methode \texttt{AUTOTUNE}
+        \item Diese kann die \texttt{buffer\_size} von \texttt{prefetch} dynamisch zur Laufzeit anpassen
+        \pycode{./code-snippets/dataset-optimize.py}
+    \end{itemize}
+\end{frame}
+
 \end{document}
