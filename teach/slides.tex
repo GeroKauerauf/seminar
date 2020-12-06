@@ -45,6 +45,11 @@
 % \usepackage{fontspec}
 \setmonofont{Roboto Mono}
 \usepackage{minted}
+\newcommand\pycode[1]{\inputminted[frame=lines, framesep=2mm, fontsize=\normalsize]{python}{#1}}
+
+\definecolor{comment}{HTML}{aaaaaa} % italic
+\definecolor{string}{HTML}{448c27}
+
 
 %---------- Ich bin ein verdammter Künstler ----------
 \usepackage{listings}
@@ -98,7 +103,7 @@
     \end{itemize}
 \end{frame}
 
-\section{Der Datensatz}
+\section{Datensatz}
 \begin{frame}
     \begin{itemize}
         \item Hier ein kleiner Einblick in unseren Datensatz
@@ -127,10 +132,23 @@
     \end{figure}
 \end{frame}
 
-\section{Code}
+\section{Datensatz}
 \begin{frame}
     \begin{itemize}
-        \item ...
+        \item Zuerst wollen wir unseren Datensatz laden
+        \item Dazu definieren wir zuerst die Bildgrößen und die Batch-size
+        \pycode{./code-snippets/dataset-params.py}
+        \item Danach möchten wir unseren gesammten Datensatz in einen Trainings- und einen Validierungssatz aufteilen
+        \item Mit dem Trainingssatz werden wir dann tatsächlich unser MLP trainieren
+        \item Den Validierungssatz nutzen wir um unser Modell nach dem Training beurteilen zu können.
+    \end{itemize}
+\end{frame}
+
+\section{Datensatz}
+\begin{frame}
+    \begin{itemize}
+        \item Dazu nutzen wir die Methode \texttt{image\_dataset\_from\_directory} aus \texttt{tf.keras.preprocessing}
+        \pycode{./code-snippets/dataset-from-directory.py}
     \end{itemize}
 \end{frame}
 
