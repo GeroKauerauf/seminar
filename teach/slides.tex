@@ -44,6 +44,8 @@
 \usepackage{interval}
 \usepackage[ngerman]{babel}
 \usepackage{csquotes}
+\usepackage{tikz}
+\def\checkmark{\tikz\fill[scale=0.4](0,.35) -- (.25,0) -- (1,.7) -- (.25,.15) -- cycle;}
 
 % \usepackage{fontspec}
 \setmonofont{Roboto Mono}
@@ -88,9 +90,9 @@
     \begin{itemize}
         \item Bildklassifizierung mit TensorFlow.Keras
         \begin{itemize}
-            \item Was soll unser Modell können?
-            \item Unser Datensatz
-            \item Konstruktion unseres Python-Programms
+            \item Was soll das Modell können?
+            \item Der Datensatz
+            \item Konstruktion des Python-Programms
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -98,18 +100,18 @@
 \section{Was soll unser Modell können?}
 \begin{frame}
     \begin{itemize}
-        \item Wir möchten ein Modell, welches unterschiedliche Blumen erkennen kann
-        \item Wir haben eine Sammlung an von Menschen klassifizierten Bildern von Blumen
+        \item Das Modell soll unterschiedliche Blumen erkennen können
+        \item Der Datensatz besteht aus Blumenbildern, welche von Menschen kategorisiert wurden
         \includegraphics[width=0.5\textwidth]{teach-plots/flower-photos}
-        \item Enthalten sind Bilder von Gänseblümchen, Löwenzahn, Rosen, Sonnenblumen und Tuplen
-        \item Mit diesem Datensatz können wir ein Modell bauen, welches zwischen genau diesen unterscheiden kann
+        \item Es gibt Bilder von Gänseblümchen, Löwenzahn, Rosen, Sonnenblumen und Tuplen
+        \item Mit diesem Datensatz kann ein Modell trainiert werden, um Blumen unterscheiden zu können
     \end{itemize}
 \end{frame}
 
 \section{Datensatz}
 \begin{frame}
     \begin{itemize}
-        \item Hier ein kleiner Einblick in unseren Datensatz
+        \item Beispielbilder.
     \end{itemize}
     \begin{figure}
         \centering
@@ -138,12 +140,12 @@
 \section{Datensatz}
 \begin{frame}
     \begin{itemize}
-        \item Zuerst wollen wir unseren Datensatz laden
+        \item Zuerst laden wir den Datensatz
         \item Dazu definieren wir zuerst die Bildgrößen und die Batch-size
         \pycode{./code-snippets/dataset-params.py}
-        \item Danach möchten wir unseren gesammten Datensatz in einen Trainings- und einen Validierungssatz aufteilen
-        \item Mit dem Trainingssatz werden wir dann tatsächlich unser MLP trainieren
-        \item Den Validierungssatz nutzen wir um unser Modell nach dem Training beurteilen zu können.
+        \item Danach wird der Datensatz in einen Trainings- und einen Validierungssatz aufgeteilt
+        \item Mit dem Trainingssatz wird dann das Modell trainiert
+        \item Mit dem Validierungssatz wird das Modell nach dem Training beurteilt
     \end{itemize}
 \end{frame}
 
@@ -158,7 +160,7 @@
 \section{Leistungsoptimierung}
 \begin{frame}
     \begin{itemize}
-        \item Wir werden nun zwei Methoden verwenden um das Laden der Daten beim Training zuverbessern
+        \item Wir verwenden zwei Methoden um die Performance beim Laden der Daten zu verbessern
         \item \texttt{Dataset.cache()}
         \begin{itemize}
             \item Geladene Bilder werden im RAM gelassen und nicht jedes mal erneut eingeladen
@@ -187,26 +189,25 @@
 \section{Leistungsoptimierung}
 \begin{frame}
     \begin{itemize}
-        \item Außerdem nutzen wir noch die experimentelle Methode \texttt{AUTOTUNE}
-        \item Diese kann die \texttt{buffer\_size} von \texttt{prefetch} dynamisch zur Laufzeit anpassen
+        \item Wir nutzen die experimentelle Methode \texttt{AUTOTUNE}
+        \item Diese passt die \texttt{buffer\_size} von \texttt{prefetch} dynamisch zur Laufzeit an
         \pycode{./code-snippets/dataset-optimize.py}
         \item Des weiteren ist es in der Praxis von Vorteil die Daten zu standardisieren
         \item Da der RGB-Farbraum das Interval \(\interval{0}{255}\) umfasst, können wir die Daten skalieren, indem wir mit einem Faktor von \(1./255\) multipilizieren
         \item Danach liegen die Werte jedes Pixels in \(\interval{0}{1}\)
         \newline  
-        \item Es gibt nur zwei Möglichkeiten
+        \item Es gibt nun zwei Möglichkeiten zu standardisieren
         \begin{itemize}
-            \item Wir standardisieren unseren Datensatz
-            \item Das erste Layer in unserem Modell standardisiert
+            \item Wir standardisieren den Datensatz
+            \item Das erste Layer in unserem Modell skaliert die Eingabe \textcolor{green}{\(\checkmark\)}
         \end{itemize}
-        \item Wir entscheiden uns für letztere
     \end{itemize}
 \end{frame}
 
 \section{Sequentielles Modell}
 \begin{frame}
     \begin{itemize}
-        \item Als nächstes wollen wir unser Modell erstellen
+        \item Als nächstes erstellen wir ein sequentielles Modell
         \item Dazu nutzen wir \texttt{tf.keras.Sequential}
         \pycode{./code-snippets/sequential-model-no-aug.py}
     \end{itemize}
@@ -215,22 +216,22 @@
 \section{Sequentielles Modell}
 \begin{frame}
     \begin{itemize}
-        \item Als nächstes konfigurieren wir unser Modell mit \texttt{tf.keras.Sequential.compile}
+        \item Wir konfigurieren das Modell mit \texttt{tf.keras.Sequential.compile}
         \item Hierbei wählen wir den \emph{Optimierer}, die \emph{Fehlerfunktion} und die \emph{Metrik}
         \pycode{./code-snippets/model-compile.py}
         \item \texttt{adam} ist ein stochastisches Gradientenabstiegsverfahren, welches auf adaptiven Schätzungen der Momente ersten und zweiten Grades beruht
-        \item \texttt{SparseCategoricalCrossentropy}, da wir mehrere Labels haben, welche durch Integer repräsentiert werden
-        \item \texttt{accuracy} berechnet wie häufig die Klassifizierung des Modell mit der tatsächlichen Klasse übereinstimmen
+        \item \texttt{SparseCategoricalCrossentropy} ist eine Fehlerfunktion für mehrere Labels
+        \item \texttt{accuracy} berechnet wie häufig die Klassifizierung durch das Modell mit der tatsächlichen Klasse übereinstimmt
     \end{itemize}
 \end{frame}
 
 \section{Training des Modells}
 \begin{frame}
     \begin{itemize}
-        \item Nachdem wir unseren Datensatz vorbereitet und unser Modell konfiguriert haben, kann nun das Training beginnen
+        \item Nachdem wir den Datensatz vorbereitet und das Modell konfiguriert haben, beginnt nun das Training
         \newline
-        \item Wir trainieren unser Modell 10 Epochen lang
-        \item Das bedeutet wir iterieren im Training 10 mal über unseren Datensatz
+        \item Wir trainieren das Modell 10 Epochen lang
+        \item Das bedeutet wir iterieren im Training 10-mal über den Trainingsdatensatz
         \pycode{./code-snippets/model-fit.py}
     \end{itemize}
 \end{frame}
@@ -238,8 +239,8 @@
 \section{Trainingsergebnisse}
 \begin{frame}
     \begin{itemize}
-        \item Nun möchten wir natürlich sehen wir gut das Training unseres Modells funktioniert hat
-        \item Dazu können wir die Trainingsgeschichte mit \texttt{matplotlib} zeichnen
+        \item Nun möchten wir natürlich sehen wie gut das Training des Modells funktioniert hat
+        \item Dazu zeichnen wir die Trainingsgeschichte mithilfe des Moduls \texttt{matplotlib}
         \pycode{./code-snippets/plot-results.py}
     \end{itemize}
 \end{frame}
@@ -247,7 +248,7 @@
 \section{Trainingsergebnisse}
 \begin{frame}
     \begin{itemize}
-        \item Die gezeichnete Graphik enthält Informationen über den Verlauf des Trainings
+        \item Die gezeichnete Grafik enthält Informationen über den Verlauf des Trainings
     \end{itemize}
     \begin{figure}
         \begin{minipage}{0.5\textwidth}
@@ -255,8 +256,11 @@
         \end{minipage}\hfill
         \begin{minipage}{0.5\textwidth}
             \begin{itemize}
-                \item Die Genauigkeit der Vorhersagen des Modell auf dem Trainingsdatensatz steigt
-                \item Die Genauigkeit der Vorhersagen auf dem Validierungssatz stagniert
+                \item Die Genauigkeit der Vorhersagen \ldots
+                \begin{itemize}
+                    \item[\ldots] des Modell auf dem Trainingsdatensatz steigt
+                    \item[\ldots] auf dem Validierungssatz stagniert
+                \end{itemize}
             \end{itemize}
         \end{minipage}
     \end{figure}
@@ -267,12 +271,12 @@
     \begin{itemize}
         \item Der auftretende Effekt wird Overfitting (dt. Überanpassung) genannt
         \item Aufgrund des kleinen Umfangs unseres Datensatzes lernt das Modell den Trainingsdatensatz im Prinzip \enquote{auswendig}
-        \item Es tritt also eine Überanpassung an den Trainingsdatensatz auf, das Modell lernt aus ungewünschten Details der Bilder
+        \item Es tritt also eine Überanpassung an den Trainingsdatensatz auf, das Modell lernt \enquote{ungewünschte} Details der Bilder
         \newline
-        \item Wir können unser Modell mit zwei Methoden verbessern
+        \item Wir können das Modell mit zwei Methoden verbessern
         \begin{itemize}
-            \item Data augmentation (dt. Datenerweiterung)
-            \item Dropout (dt. Rauswerfen)
+            \item[1.] Data augmentation (dt. Datenerweiterung)
+            \item[2.] Dropout (dt. Rauswerfen)
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -280,10 +284,10 @@
 \section{Data augmentation}
 \begin{frame}
     \begin{itemize}
-        \item Um unseren Datensatz künstlich zu erweitern können wir bereits im Datensatz enthaltene Bilder \enquote{leicht} verändern
+        \item Um unseren Datensatz künstlich zu erweitern, können wir bereits im Datensatz enthaltene Bilder \enquote{leicht} verändern
         \item Dies ist zum Beispiel durch Spiegeln, Rotation oder Zoomen möglich
         \newline
-        \item Dazu können wir drei experimentelle Schichten aus TensorFlow nutzen
+        \item Dafür nutzen wir drei experimentelle Schichten aus TensorFlow
         \pycode{./code-snippets/data-aug.py}
     \end{itemize}
 \end{frame}
@@ -299,9 +303,8 @@
 \section{Training des verbesserten Modells}
 \begin{frame}
     \begin{itemize}
-        \item Nun müssen wir unser verbessertes Modell noch kompilieren
+        \item Nun kompilieren und trainieren wir das verbesserte Modell noch
         \pycode{./code-snippets/model-compile.py}
-        \item Und trainieren
         \pycode{./code-snippets/improved-model-fit.py}
     \end{itemize}
 \end{frame}
@@ -327,7 +330,7 @@
 \section{Vorhersagen von neuen Daten}
 \begin{frame}
     \begin{itemize}
-        \item Nun wollen wir natürlich auch Vorhersagen für beliebige Bilder machen
+        \item Jetzt wollen wir natürlich auch Vorhersagen für beliebige (neue) Bilder machen
     \end{itemize}
     \pycode{./code-snippets/predict-new-image.py}
     \begin{minipage}{0.5\textwidth}
@@ -343,7 +346,7 @@
 \section{Fazit}
 \begin{frame}
     \begin{itemize}
-        \item TensorFlow ist ein \emph{mächtiges} und \enquote{leicht} nutzbares Modul für \textbf{Machine Learning}
+        \item TensorFlow ist ein \emph{mächtiges} Modul für \textbf{Machine Learning}
         \newline
         \item Quellen
         \begin{itemize}
