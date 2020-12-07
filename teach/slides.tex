@@ -42,6 +42,8 @@
 \usepackage{xcolor}
 \usepackage[utf8]{inputenc}
 \usepackage{interval}
+\usepackage[ngerman]{babel}
+\usepackage{csquotes}
 
 % \usepackage{fontspec}
 \setmonofont{Roboto Mono}
@@ -75,7 +77,7 @@
 
 % Setup presentation information
 \title{Back-Propagation and Algorithms for Training Artificial Neural Networks with TensorFlow}
-\date{10. Dezember 2020}
+\date{11. Dezember 2020}
 \author{Gero Kauerauf}
 
 \frame{\titlepage}
@@ -240,6 +242,86 @@
         \item Dazu können wir die Trainingsgeschichte mit \texttt{matplotlib} zeichnen
         \pycode{./code-snippets/plot-results.py}
     \end{itemize}
+\end{frame}
+
+\section{Trainingsergebnisse}
+\begin{frame}
+    \begin{itemize}
+        \item Die gezeichnete Graphik enthält Informationen über den Verlauf des Trainings
+    \end{itemize}
+    \begin{figure}
+        \begin{minipage}{0.5\textwidth}
+            \includegraphics[width=\textwidth]{./teach-plots/pre_augmentation.pdf}
+        \end{minipage}\hfill
+        \begin{minipage}{0.5\textwidth}
+            \begin{itemize}
+                \item Die Genauigkeit der Vorhersagen des Modell auf dem Trainingsdatensatz steigt
+                \item Die Genauigkeit der Vorhersagen auf dem Validierungssatz stagniert
+            \end{itemize}
+        \end{minipage}
+    \end{figure}
+\end{frame}
+
+\section{Overfitting}
+\begin{frame}
+    \begin{itemize}
+        \item Der auftretende Effekt wird Overfitting (dt. Überanpassung) genannt
+        \item Aufgrund des kleinen Umfangs unseres Datensatzes lernt das Modell den Trainingsdatensatz im Prinzip \enquote{auswendig}
+        \item Es tritt also eine Überanpassung an den Trainingsdatensatz auf, das Modell lernt aus ungewünschten Details der Bilder
+        \newline
+        \item Wir können unser Modell mit zwei Methoden verbessern
+        \begin{itemize}
+            \item Data augmentation (dt. Datenerweiterung)
+            \item Dropout (dt. Rauswerfen)
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Data augmentation}
+\begin{frame}
+    \begin{itemize}
+        \item Um unseren Datensatz künstlich zu erweitern können wir bereits im Datensatz enthaltene Bilder \enquote{leicht} verändern
+        \item Dies ist zum Beispiel durch Spiegeln, Rotation oder Zoomen möglich
+        \newline
+        \item Dazu können wir drei experimentelle Schichten aus TensorFlow nutzen
+        \pycode{./code-snippets/data-aug.py}
+    \end{itemize}
+\end{frame}
+
+\section{Verbessertes Modell}
+\begin{frame}
+    \begin{itemize}
+        \item Zu unserem verbesserten Modell fügen wir nun noch eine \texttt{tf.keras.layers.Dropout}-Schicht hinzu
+        \pycode{./code-snippets/improved-model.py}
+    \end{itemize}
+\end{frame}
+
+\section{Training des verbesserten Modells}
+\begin{frame}
+    \begin{itemize}
+        \item Nun müssen wir unser verbessertes Modell noch kompilieren
+        \pycode{./code-snippets/model-compile.py}
+        \item Und trainieren
+        \pycode{./code-snippets/improved-model-fit.py}
+    \end{itemize}
+\end{frame}
+
+\section{Ergebnis der Verbesserung}
+\begin{frame}
+    \begin{figure}
+        \begin{minipage}{0.5\textwidth}
+            \begin{itemize}
+                \item Vorher.
+            \end{itemize}
+            \includegraphics[width=\textwidth]{./teach-plots/pre_augmentation.pdf}
+        \end{minipage}\hfill
+        \begin{minipage}{0.5\textwidth}
+            \begin{itemize}
+                \item Nachher.
+            \end{itemize}
+            \includegraphics[width=\textwidth]{./teach-plots/post_augmentation.pdf}
+        \end{minipage}
+    \end{figure}
 \end{frame}
 
 \end{document}
