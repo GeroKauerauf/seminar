@@ -41,6 +41,7 @@
 \usepackage{hyperref}
 \usepackage{xcolor}
 \usepackage[utf8]{inputenc}
+\usepackage{interval}
 
 % \usepackage{fontspec}
 \setmonofont{Roboto Mono}
@@ -187,6 +188,57 @@
         \item Außerdem nutzen wir noch die experimentelle Methode \texttt{AUTOTUNE}
         \item Diese kann die \texttt{buffer\_size} von \texttt{prefetch} dynamisch zur Laufzeit anpassen
         \pycode{./code-snippets/dataset-optimize.py}
+        \item Des weiteren ist es in der Praxis von Vorteil die Daten zu standardisieren
+        \item Da der RGB-Farbraum das Interval \(\interval{0}{255}\) umfasst, können wir die Daten skalieren, indem wir mit einem Faktor von \(1./255\) multipilizieren
+        \item Danach liegen die Werte jedes Pixels in \(\interval{0}{1}\)
+        \newline  
+        \item Es gibt nur zwei Möglichkeiten
+        \begin{itemize}
+            \item Wir standardisieren unseren Datensatz
+            \item Das erste Layer in unserem Modell standardisiert
+        \end{itemize}
+        \item Wir entscheiden uns für letztere
+    \end{itemize}
+\end{frame}
+
+\section{Sequentielles Modell}
+\begin{frame}
+    \begin{itemize}
+        \item Als nächstes wollen wir unser Modell erstellen
+        \item Dazu nutzen wir \texttt{tf.keras.Sequential}
+        \pycode{./code-snippets/sequential-model-no-aug.py}
+    \end{itemize}
+\end{frame}
+
+\section{Sequentielles Modell}
+\begin{frame}
+    \begin{itemize}
+        \item Als nächstes konfigurieren wir unser Modell mit \texttt{tf.keras.Sequential.compile}
+        \item Hierbei wählen wir den \emph{Optimierer}, die \emph{Fehlerfunktion} und die \emph{Metrik}
+        \pycode{./code-snippets/model-compile.py}
+        \item \texttt{adam} ist ein stochastisches Gradientenabstiegsverfahren, welches auf adaptiven Schätzungen der Momente ersten und zweiten Grades beruht
+        \item \texttt{SparseCategoricalCrossentropy}, da wir mehrere Labels haben, welche durch Integer repräsentiert werden
+        \item \texttt{accuracy} berechnet wie häufig die Klassifizierung des Modell mit der tatsächlichen Klasse übereinstimmen
+    \end{itemize}
+\end{frame}
+
+\section{Training des Modells}
+\begin{frame}
+    \begin{itemize}
+        \item Nachdem wir unseren Datensatz vorbereitet und unser Modell konfiguriert haben, kann nun das Training beginnen
+        \newline
+        \item Wir trainieren unser Modell 10 Epochen lang
+        \item Das bedeutet wir iterieren im Training 10 mal über unseren Datensatz
+        \pycode{./code-snippets/model-fit.py}
+    \end{itemize}
+\end{frame}
+
+\section{Trainingsergebnisse}
+\begin{frame}
+    \begin{itemize}
+        \item Nun möchten wir natürlich sehen wir gut das Training unseres Modells funktioniert hat
+        \item Dazu können wir die Trainingsgeschichte mit \texttt{matplotlib} zeichnen
+        \pycode{./code-snippets/plot-results.py}
     \end{itemize}
 \end{frame}
 
