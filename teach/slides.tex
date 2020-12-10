@@ -199,7 +199,7 @@
         \item Es gibt nun zwei Möglichkeiten zu standardisieren
         \begin{itemize}
             \item Wir standardisieren den Datensatz
-            \item Das erste Layer in unserem Modell skaliert die Eingabe \textcolor{green}{\(\checkmark\)}
+            \item Das erste Layer in unserem Modell skaliert die Eingabe \quad \textcolor{rwthblue}{\(\leftarrow\)} \textcolor{rwthblue}{\(\checkmark\)}
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -234,16 +234,20 @@
         \item Das bedeutet wir iterieren im Training 10-mal über den Trainingsdatensatz
         \pycode{./code-snippets/model-fit.py}
     \end{itemize}
-\end{frame}
-
-\section{Trainingsergebnisse}
-\begin{frame}
     \begin{itemize}
-        \item Nun möchten wir natürlich sehen wie gut das Training des Modells funktioniert hat
+        \item Nun möchten wir natürlich sehen, wie gut das Training des Modells funktioniert hat
         \item Dazu zeichnen wir die Trainingsgeschichte mithilfe des Moduls \texttt{matplotlib}
-        \pycode{./code-snippets/plot-results.py}
     \end{itemize}
 \end{frame}
+
+% \section{Trainingsergebnisse}
+% \begin{frame}
+%     \begin{itemize}
+%         \item Nun möchten wir natürlich sehen wie gut das Training des Modells funktioniert hat
+%         \item Dazu zeichnen wir die Trainingsgeschichte mithilfe des Moduls \texttt{matplotlib}
+%         \pycode{./code-snippets/plot-results.py}
+%     \end{itemize}
+% \end{frame}
 
 \section{Trainingsergebnisse}
 \begin{frame}
@@ -258,8 +262,8 @@
             \begin{itemize}
                 \item Die Genauigkeit der Vorhersagen \ldots
                 \begin{itemize}
-                    \item[\ldots] des Modell auf dem Trainingsdatensatz steigt
-                    \item[\ldots] auf dem Validierungssatz stagniert
+                    \item[\ldots] für den Trainingsdatensatz steigt
+                    \item[\ldots] für den Validierungsdatensatz stagniert
                 \end{itemize}
             \end{itemize}
         \end{minipage}
