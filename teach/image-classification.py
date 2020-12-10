@@ -128,19 +128,25 @@ epochs_range = range(epochs)
 
 plt.figure(figsize=(8, 8))
 plt.subplot(1, 2, 1)
+
+plt.ylim(0.3, 1) # fixed scale
+
 plt.plot(epochs_range, acc, label="Training Accuracy")
 plt.plot(epochs_range, val_acc, label="Validation Accuracy")
 plt.legend(loc="lower right")
 plt.title("Training and Validation Accuracy")
 
 plt.subplot(1, 2, 2)
+
+plt.ylim(0, 1.7) # fixed scale
+
 plt.plot(epochs_range, loss, label="Training Loss")
 plt.plot(epochs_range, val_loss, label="Validation Loss")
 plt.legend(loc="upper right")
 plt.title("Training and Validation Loss")
 
 # ----- Save plot
-plt.savefig("pre_augmentation.pdf", bbox_inches='tight')
+plt.savefig("pre_augmentation-fixed.pdf", bbox_inches='tight')
 # ---------------
 
 # plt.show()
@@ -205,19 +211,25 @@ epochs_range = range(epochs)
 
 plt.figure(figsize=(8, 8))
 plt.subplot(1, 2, 1)
+
+plt.ylim(0.3, 1) # fixed scale
+
 plt.plot(epochs_range, acc, label="Training Accuracy")
 plt.plot(epochs_range, val_acc, label="Validation Accuracy")
 plt.legend(loc="lower right")
 plt.title("Training and Validation Accuracy")
 
 plt.subplot(1, 2, 2)
+
+plt.ylim(0, 1.7) # fixed scale
+
 plt.plot(epochs_range, loss, label="Training Loss")
 plt.plot(epochs_range, val_loss, label="Validation Loss")
 plt.legend(loc="upper right")
 plt.title("Training and Validation Loss")
 
 # ----- Save plot
-plt.savefig("post_augmentation.pdf", bbox_inches='tight')
+plt.savefig("post_augmentation-fixed.pdf", bbox_inches='tight')
 # ---------------
 
 # plt.show()
