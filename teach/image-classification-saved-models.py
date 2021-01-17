@@ -1,6 +1,4 @@
 import numpy as np
-import os
-import PIL
 import tensorflow as tf
 
 from tensorflow import keras
@@ -9,7 +7,6 @@ from tensorflow.keras.models import Sequential
 
 import pathlib
 
-# pre_aug_model = tf.keras.models.load_model("./saved_model/pre_augmentation")
 post_aug_model = tf.keras.models.load_model("./saved_model/post_augmentation")
 class_names = ["daisy", "dandelion", "roses", "sunflowers", "tulips"]
 

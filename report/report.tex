@@ -88,12 +88,29 @@ abstract
 \section{Introduction}
 Sample citation \cite{Goodfellow-et-al-2016}.
 \section{Problem Description}
-\section{State of the Art}
 
- \section{Feedforward Networks}
- \subsection{Multilayer Perceptrons}
- \subsection{tf.keras.Sequential}
- \subsection{Cost Functions}
+\section{Feedforward Networks}
+\emph{Deep feedforward networks}, also called \emph{feedforward neural networks} or \emph{multilayer perceptrons} (MLPs) are are basic deep learning models.
+Their main purpose is to approximate some kind of function \(f^*(x)\).
+Take for example a classification function \(y = f^*(x)\), where every input \(x\) maps to a class \(y\).
+A feedforward network now aims to learn the best parameters \(\Theta\) for a function \(y = f(x, \Theta)\) that approximates \(f^*(x)\).
+
+These models are \emph{networks} due to the fact that they can be represented by \emph{directed graphs}.
+One of those \emph{graphs} models the consecutive execution of functions whose composition is \(f\).
+They are called \emph{feedforward networks} because the input \(x\) flows through these functions without any \emph{feedback} connections.
+This means that the graph is \emph{acyclic}.
+If the graph is \emph{not acyclic} and therefore \(feedback\) connections exist, we speak of \emph{recurrent neural networks}.
+
+For example let \(f(x) = (f^3 \circ f^2 \circ f^1)(x) = f^3(f^2(f^1(x)))\).
+We now define the \emph{depth} of a \emph{feedforward network} \(f\) as the number of functions that compose it.
+Our example has a \emph{depth} of \(3\).
+These kind of chains are very typical in \emph{neural networks}, as each function in the chain represents a layer in the \emph{directed acyclic graph}.
+The last element of the chain (in our example \(f^1\)) and therefore the last layer in the graph is called the \emph{output layer} as it maps the input \(x\) to its final value.
+If we think of \(f\) as a classifier function the elements of the \emph{codomain} of \(f^1\) are the classes.
+
+\subsection{Multilayer Perceptrons}
+\subsection{tf.keras.Sequential}
+\subsection{Cost Functions}
 
 \section{Deep Learning}
 \subsection{Computational Graphs}
@@ -101,6 +118,7 @@ Sample citation \cite{Goodfellow-et-al-2016}.
 \subsection{Stochastic Gradient Descent}
 \subsection{tf.model}
 
+\section{State of the Art}
 \section{Conclusion}
 
 %
