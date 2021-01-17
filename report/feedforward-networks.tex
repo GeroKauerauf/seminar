@@ -1,0 +1,40 @@
+\section{Feedforward Networks}
+\emph{Deep feedforward networks}, also called \emph{feedforward neural networks} or \emph{multilayer perceptrons} (MLPs) are are basic deep learning models.
+Their main purpose is to approximate some kind of function \(f^*(x)\).
+Take for example a classification function \(y = f^*(x)\), where every input \(x\) maps to a class \(y\).
+A feedforward network now aims to learn the best parameters \(\Theta\) for a function \(y = f(x, \Theta)\) that approximates \(f^*(x)\).
+
+These models are \emph{networks} due to the fact that they can be represented by \emph{directed graphs}.
+One of those \emph{graphs} models the consecutive execution of functions whose composition is \(f\).
+They are called \emph{feedforward networks} because the input \(x\) flows through these functions without any \emph{feedback} connections.
+This means that the graph is \emph{acyclic}.
+If the graph is \emph{not acyclic} and therefore \(feedback\) connections exist, we speak of \emph{recurrent neural networks}.
+
+For example let \(f(x) = (f^3 \circ f^2 \circ f^1)(x) = f^3(f^2(f^1(x)))\).
+We now define the \emph{depth} of a \emph{feedforward network} \(f\) as the number of functions that compose it.
+Our example has a \emph{depth} of \(3\).
+These kind of chains are very typical in \emph{neural networks}, as each function in the chain represents a layer in the \emph{directed acyclic graph}.
+The last element of the chain (in our example \(f^1\)) and therefore the last layer in the graph is called the \emph{output layer} as it maps the input \(x\) to its final value.
+If we think of \(f\) as a classifier function the elements of the \emph{codomain} of \(f^1\) are the classes.
+Likewise, the elements of the \emph{domain} of the first function in the chain (in our example \(f^3\)) are the inputs of the network.
+The first layer is called \emph{input layer}.
+Layers between the \emph{input} and \emph{output} layer are called \emph{hidden layers}.
+
+\subsection{Feedforward network graphs}
+As proposed earlier we can also think of \emph{neural networks} as \emph{acyclic directed graphs}.
+Loosely inspired by neuroscience \emph{neurons} are interpreted as \emph{nodes} and \emph{synapses} as \emph{edges}.
+Each \emph{node} now receives input from an arbitrary amount of neurons in the previous layer and computes an output with its own activation function.
+In contrast to that we have the \emph{edges} of our neural network, which have a scalar \emph{weight}.
+These \emph{weights} are now what can be adjusted to changed the output of the neural network.
+
+% Todo: include small sample of a neural network graph
+
+In order to get more \enquote{flexible} we add a \emph{bias} node to each layer.
+It is shown that in most modern \emph{feedforward networks} a \emph{rectifier linear units} activation function works best. \cite{Nair-Hinton} \cite{inproceedings}
+
+
+
+\subsection{Linear algebra}
+We can represent the weights of the edges between two layers as a \emph{weight matrix} \(\fat{W} \in \mathbb{R}^{m \times n}\).
+The input can be represented as a vector \({x \in \mathbb{R}^n}\).
+Calculating the output of a neural network can therefore be achieved by iterative \emph{matrix-vector multiplication} and the usage of the activation function for each layer.

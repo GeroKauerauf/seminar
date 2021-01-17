@@ -1,4 +1,4 @@
-report.pdf : report.tex
+report.pdf : report.tex feedforward-networks.tex
 	xelatex -shell-escape report
 	bibtex report
 	xelatex -shell-escape report
