@@ -22,19 +22,23 @@ Layers between the \emph{input} and \emph{output} layer are called \emph{hidden 
 
 \subsection{Feedforward network graphs}
 As proposed earlier we can also think of \emph{neural networks} as \emph{acyclic directed graphs}.
-Loosely inspired by neuroscience \emph{neurons} are interpreted as \emph{nodes} and \emph{synapses} as \emph{edges}.
+Loosely inspired by neuroscience, \emph{neurons} are interpreted as \emph{nodes} and \emph{synapses} as \emph{edges}.
 Each \emph{node} now receives input from an arbitrary amount of neurons in the previous layer and computes an output with its own activation function.
-In contrast to that we have the \emph{edges} of our neural network, which have a scalar \emph{weight}.
+An \emph{edges} on the other hand has a scalar \emph{weight}.
 These \emph{weights} are now what can be adjusted to changed the output of the neural network.
 
-% Todo: include small sample of a neural network graph
+It is shown that in most feedforward networks a \emph{rectifier linear units} (reLU) (\(f(x) = \text{max}(0, x)\)) activation function works best. \cite{Nair-Hinton} \cite{inproceedings}
+However, in certain cases other activation functions might perform better.
+Such would be for example the \emph{swish} activation function (\(f(x) = x * \text{sigmoid}(x)\)), that tends to perform better than reLU on deeper models. \cite{DBLP:journals/corr/abs-1710-05941}
 
-In order to get more \enquote{flexible} we add a \emph{bias} node to each layer.
-It is shown that in most modern \emph{feedforward networks} a \emph{rectifier linear units} activation function works best. \cite{Nair-Hinton} \cite{inproceedings}
+% Small sample neural network graph
+\input{neural-network-example.tex}
 
+This DNN \fref{fig:dnn-example} can now also be described by its \emph{weight matrices}. 
 
-
-\subsection{Linear algebra}
-We can represent the weights of the edges between two layers as a \emph{weight matrix} \(\fat{W} \in \mathbb{R}^{m \times n}\).
+We can represent the weights of the edges between two layers as a \emph{weight matrices} \(\fat{W} \in \mathbb{R}^{m \times n}\).
 The input can be represented as a vector \({x \in \mathbb{R}^n}\).
-Calculating the output of a neural network can therefore be achieved by iterative \emph{matrix-vector multiplication} and the usage of the activation function for each layer.
+Calculating the output of a neural network can therefore be achieved by iterative \emph{matrix-vector multiplication} and component-wise usage of the activation function on each layer.
+
+
+% In order to get more \enquote{flexible} we add a \emph{bias} node to each layer.

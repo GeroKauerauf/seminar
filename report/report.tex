@@ -23,6 +23,13 @@
 \setmonofont{Roboto Mono}
 \usepackage{minted}
 
+% Draw neural network
+\usepackage{tikz}
+
+\usepackage{fancyref}
+\let\oldfref\fref
+\renewcommand{\fref}[1]{[\oldfref{#1}]}
+
 %---------- Ich bin ein verdammter Künstler ----------
 \usepackage{listings}
 \definecolor{maroon}{RGB}{128, 0, 0}
@@ -92,7 +99,8 @@ abstract
 Sample citation \cite{Goodfellow-et-al-2016}.
 \section{Problem Description}
 
-% Chapter 3 - Introduction to Feedforward Networks
+% Introduction to Feedforward Networks
+% Section - Feedforward networks
 \input{feedforward-networks.tex}
 
 \subsection{Multilayer Perceptrons}
