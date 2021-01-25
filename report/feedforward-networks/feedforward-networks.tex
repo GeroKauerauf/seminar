@@ -32,7 +32,7 @@ However, in certain cases other activation functions might perform better.
 Such would be for example the \emph{swish} activation function (\(f(x) = x * \text{sigmoid}(x)\)), that tends to perform better than reLU on deeper models. \cite{DBLP:journals/corr/abs-1710-05941}
 
 % Small sample neural network graph
-\input{neural-network-example.tex}
+\input{feedforward-networks/neural-network-example.tex}
 
 This DNN \fref{fig:dnn-example} can now also be described by its \emph{weight matrices}. 
 
@@ -58,7 +58,7 @@ With the corresponding bias vectors
     \begin{pmatrix}
         w_{0}^{(0)} \\
         w_{1}^{(0)}
-    \end{pmatrix},
+    \end{pmatrix}, \quad
     b^{(1)} =
     \begin{pmatrix}
         w_{0}^{(1)}

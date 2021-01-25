@@ -88,33 +88,50 @@
 \maketitle              % typeset the header of the contribution
 %
 \begin{abstract}
-abstract
+    \textsc{Todo} % Todo
 \keywords{Deep Learning \and Back-Propagation \and Stochastic Gradient Descent \and TensorFlow}
 \end{abstract}
 %
 %
 %
 
-\section{Introduction}
+% Introduction
+% Section - Introduction
+\input{introduction/introduction.tex}
 Sample citation \cite{Goodfellow-et-al-2016}.
-\section{Problem Description}
+
+% Section - Problem Description
+\input{problem-description/problem-description.tex}
 
 % Introduction to Feedforward Networks
 % Section - Feedforward networks
-\input{feedforward-networks.tex}
+\input{feedforward-networks/feedforward-networks.tex}
 
-\subsection{Multilayer Perceptrons}
-\subsection{tf.keras.Sequential}
-\subsection{Cost Functions}
+% \subsection{tf.keras.Sequential}
 
-\section{Deep Learning}
-\subsection{Computational Graphs}
-\subsection{Back-Propagation}
-\subsection{Stochastic Gradient Descent}
-\subsection{tf.model}
+% Introduction to Deep Learning
+% Section - Deep learning
+\input{deep-learning/deep-learning.tex}
 
-\section{State of the Art}
-\section{Conclusion}
+% Subsection - Cost Functions
+\input{deep-learning/cost-functions.tex}
+
+% Subsection - Computational Graphs
+\input{deep-learning/computational-graphs.tex}
+
+% Subsection - Back-Propagation
+\input{deep-learning/back-propagation.tex}
+
+% Subsection - Stochastic gradient descent
+\input{deep-learning/stochastic-gradient-descent.tex}
+
+% \subsection{tf.model}
+
+% Section - State of the Art
+\input{state-of-the-art/state-of-the-art.tex}
+
+% Section - Conclusion
+\input{conclusion/conclusion.tex}
 
 %
 % ---- Bibliography ----
