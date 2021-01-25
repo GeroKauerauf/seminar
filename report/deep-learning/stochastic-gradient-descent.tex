@@ -1,1 +1,46 @@
 \subsection{Stochastic gradient descent}
+\emph{Stochastic gradient descent} (SGD) is the main \emph{optimization algorithm} that is used in \emph{deep learning}.
+In \emph{TensorFlow} many of the \emph{optimizers} that come within \emph{keras} are based on the SGD algorithm.
+
+The underlying gradient descent is an iterative optimization algorithm.
+Its main idea is to start at an arbitrary point and from there on step into a direction the that minimizes the function value.
+This way, it gets closer to a minimum with each step.
+Suppose we have a function \(f : \mathbb{R}^2 \rightarrow \mathbb{R}\) that is differentiable.
+For any point \(x_0\) we can evaluate its derivative \(f^{\prime}(x_0)\).
+And since the derivative describes the slope of the function, it tells us if we have to increase or decrease \(x_0\) in order to make \(f(x_0)\) smaller.
+
+Therefore we can reduce \(f(x)\) by taking a small step into the opposite direction of the derivative \cite{cauchy}
+\begin{equation}
+    \label{eq:cauchy}
+    f(x - \epsilon \; \text{sign}(f^{\prime}(x))) < f(x), \qquad \text{for a small enough } \epsilon.
+\end{equation}
+
+% Todo make graphic that shows x^2 and 2x and their correlation
+
+What is shown in (fref figure above todo) and \fref{eq:cauchy} can of course be expanded to \(\mathbb{R}^n\).
+
+Let \(x \in \mathbb{R}^n\) and \(f : \mathbb{R}^n \rightarrow \mathbb{R}^m\).
+The directional derivative of \(f\) in direction \(u\), a unit vector, is the slope of \(f\) in direction \(u\).
+The directional derivative of \(f(x)\) is defined as 
+\begin{equation}
+    \frac{\partial}{\partial \alpha} f(x + \alpha u) = u^{T} \nabla_x f(x) \big\vert_{\alpha = 0}.
+\end{equation}
+
+We would now like to know in which direction \(f\) decreases the fastest.
+This can be found out by using the directional derivative.
+\begin{align}
+      &\min_{u, u^{T}u = 1} u^{T} \nabla_x f(x) \\
+    = &\min_{u, u^{T}u = 1} \lVert u \rVert_2 \lVert \nabla_x f(x) \rVert_2 \cos \theta \\
+    = &\min_{u, u^{T}u = 1} \lVert \nabla_x f(x) \rVert_2 \cos \theta,
+\end{align}
+where \(\text{cos } \theta\) is the angle between the gradient and \(u\).
+By ignoring the gradient, which does not depend on \(u\), this simplifies further to \(\min_{u} \cos \theta\).
+Since \(\cos(\pi/2) = 0\), this is minimized if the gradient and the unit vector point in opposite directions.
+This means the negative gradient points the steepest way downhill.
+
+Therefore taking a step in direction of \(-\nabla_x f(x)\) is an improvement.
+It follows that
+\begin{equation}
+    \lVert f(x - \epsilon \; \nabla_x f(x)) \rVert < \lVert f(x) \rVert, \qquad \text{for a small enough } \epsilon,
+\end{equation}
+expandes the gradient descent algorithm to arbitrary dimension. This is also called \emph{method of steepest descent}.
