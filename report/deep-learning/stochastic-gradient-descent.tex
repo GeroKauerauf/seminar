@@ -35,7 +35,7 @@ This can be found out by using the directional derivative.
 \end{align}
 where \(\text{cos } \theta\) is the angle between the gradient and \(u\).
 By ignoring the gradient, which does not depend on \(u\), this simplifies further to \(\min_{u} \cos \theta\).
-Since \(\cos(\pi/2) = 0\), this is minimized if the gradient and the unit vector point in opposite directions.
+Since \(\cos(\pi) = -1\), this is minimized if the gradient and the unit vector point in opposite directions.
 This means the negative gradient points the steepest way downhill.
 
 Therefore taking a step in direction of \(-\nabla_x f(x)\) is an improvement.
@@ -72,7 +72,7 @@ where \(\eta\) describes the step size, however in the context of deep learning 
     \While{$\lVert Q(w) \rVert \geq \epsilon$}{
         Randomly shuffle dataset entries\;
         \For{$i \gets 1$ \KwTo $n$}{
-            $w \gets w - \eta\footnotemark \nabla Q_i(w)$\;
+            $w \gets w - \eta \nabla Q_i(w)$\;
         }
     }
     \caption{Stochastic gradient descent}
