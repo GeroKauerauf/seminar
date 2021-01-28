@@ -44,3 +44,36 @@ It follows that
     \lVert f(x - \epsilon \; \nabla_x f(x)) \rVert < \lVert f(x) \rVert, \qquad \text{for a small enough } \epsilon,
 \end{equation}
 expandes the gradient descent algorithm to arbitrary dimension. This is also called \emph{method of steepest descent}.
+Notice that we have to calculate the gradient for each step.
+For functions that take a lot of inputs (e.g. DNNs), this is very expensive.
+
+\paragraph{Stochastic gradient descent} takes, as its name proposes, a stochastic approch to avoid the complete calculation of the gradient for functions that can be expressed a sum.
+
+In the context of training DNNs we often have \emph{loss} functions that decompose into sums.
+For example \emph{least squares estimation} essentially describes the sum \(\sum^{n}_{i = 1} (f(x_i) - \tilde{f}(x_i))^2\).
+
+A \emph{minibatch} is a small subset of training examples, usually at maximum just a few hundred, for which we then calculate the gradient.
+This means that we basically calculate the gradient for a partial sum of the loss function.
+By approximating our gradient this way, we may fit a model onto millions of examples way cheaper. 
+
+Let \(Q(w)\) be a function of the form \(Q(w) = \sum^{n}_{i = 1} Q_i(w)\), where we want to estimate \(w\), so that it minimizes \(Q(w)\).
+
+An estimated gradient for a \emph{minibatch} of size \(m\) could than formed as
+\begin{equation}
+    \boldsymbol{g} = \eta \nabla \sum^{m}_{i = 1} Q_i(w),
+\end{equation}
+where \(\eta\) describes the step size, however in the context of deep learning we speak of a \emph{learning rate}.
+
+\begin{algorithm}[H]
+    \KwIn{$Q(w) = \sum^{n}_{i = 1} Q_i(w)$}
+    \KwOut{$w$ that minimizes $Q(w)$}
+    \BlankLine
+    Choose initial $w$\;
+    \While{$\lVert Q(w) \rVert \geq \epsilon$}{
+        Randomly shuffle dataset entries\;
+        \For{$i \gets 1$ \KwTo $n$}{
+            $w \gets w - \eta\footnotemark \nabla Q_i(w)$\;
+        }
+    }
+    \caption{Stochastic gradient descent}
+\end{algorithm}
