@@ -1,0 +1,15 @@
+digraph G {
+    rankdir = BT;
+
+    {
+        node [shape=circle,style="filled", color=black, fillcolor=yellow, fillcolor=yellow]
+        w [label="w"]
+        x [label="x"]
+        y [label="y"]
+        z [label="z"]
+    }
+    x -> y [label=" f"];
+    w -> x [label=" f"];
+    y -> z [label=" f"];
+}
+# dot -Tpdf back-prop.dot -o back-prop.pdf

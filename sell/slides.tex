@@ -139,10 +139,7 @@
     \begin{itemize}
         \item Für ein neuronales Netz kann man dann eine Kostenfunktion aufstellen
         \item Diese beschreibt den Fehler, um den sich die Ausgabe des neuronalen Netzes vom tatsächlichen Wert unterscheidet \newline
-        \item Bsp.:
-        \begin{itemize}
-            \item 
-        \end{itemize}
+        \item Bsp.: Kleinste-Quadrate Methode \newline
         \item[\(\rightarrow\)] Minimiert man den Fehler und passt die Gewichte dementsprechend an, so verbessert man das Netz \newline
         \item Um ein Minimum zu finden brauchen wir die Ableitung
     \end{itemize}
@@ -163,8 +160,8 @@
                 \item Zuerst berechnen wir \(XW\) und speichern das Ergebnis in \(U^{(1)}\)
                 \item Danach berechnen wir \(U^{(2)} = U^{(1)} + b \; \Leftrightarrow \; U^{(2)} = XW + b\)
                 \item ReLU steht für \emph{rectifier linear unit}
-                \item \(\rightarrow f(x) = max\{0, x\}\) \newline
-                \item Das bedeutet, dass dieser \enquote{computational graph} \(H = max\{0, XW + b\}\) beschreibt
+                \item \(\rightarrow f(x) = \max\{0, x\}\) \newline
+                \item Das bedeutet, dass dieser \enquote{computational graph} \(H = \max\{0, XW + b\}\) beschreibt
             \end{itemize}
         \end{minipage}
         \caption{\href{http://www.deeplearningbook.org}{www.DeepLearningBook.org}}
@@ -175,9 +172,33 @@
 \begin{frame}
     \begin{itemize}
         \item Back-Propagation ist \enquote{Graph-Algorithmus} der den Gradienten eines solchen Graphen bestimmen kann
-        \item Dabei nutzt Back-Propagation die \emph{Kettenregel} \newline
-        \item Back-Propagation ist somit \enquote{algorithmisches Differnzieren}
+        \item Dabei nutzt Back-Propagation \emph{rekursiv} die \emph{Kettenregel} \newline
+        \item Bei der Back-Propagation handelt es sich somit um \enquote{algorithmisches Differenzieren}
     \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \begin{figure}
+        \centering
+        \begin{minipage}{0.45\textwidth}
+            \begin{figure}[]
+                \centering
+                \includegraphics[width=0.4\textwidth]{./images/back-prop.pdf}
+            \end{figure}
+        \end{minipage}\hfill
+        \begin{minipage}{0.45\textwidth}
+            \begin{itemize}
+                \item \(x = f(w)\), \(y = f(x)\), \(z = f(y)\)
+                \item Wir wollen nun \(\frac{\partial z}{\partial w}\) berechnen
+            \end{itemize}
+            \begin{align*}
+                \frac{\partial z}{\partial w} &= \frac{\partial z}{\partial y} \frac{\partial y}{\partial x} \frac{\partial x}{\partial w} \\
+                &= f\prime(y) f\prime(x) f\prime(w) \\
+                &= f\prime(f(f(w)))f\prime(f(w))f\prime(w)
+            \end{align*}
+        \end{minipage}
+        \caption{\href{http://www.deeplearningbook.org}{www.DeepLearningBook.org}}
+    \end{figure}
 \end{frame}
 
 \section{Gradientenverfahren}
@@ -185,20 +206,19 @@
     \begin{itemize}
         \item Das Gradientenabstiegsverfahren ist ein iterativer Algorithmus, zum lösen von Optimierungsproblemen \newline
         \item Im \enquote{Machine Learning} wird allerdings eine stochastische Abwandlung, das \emph{stochastische Gradientenverfahren} (SGD) genutzt \newline
-        \item In Modulen wie TensorFlow basieren viele \enquote{Optimierer} auf SGD
+        \item In Modulen wie TensorFlow basieren viele \enquote{Optimierer} auf SGD \newline
+        \item[\(\rightarrow\)] SGD ist bei Kostenfunktionen so gut, da diese meistens eine Summe sind
     \end{itemize}
 \end{frame}
 
 \begin{frame}
     \begin{itemize}
-        \item Todo: Slide mit 3D-Plot Gradient-Descent
+        \item Beispielfunktion:
     \end{itemize}
-\end{frame}
-
-\begin{frame}
-    \begin{itemize}
-        \item Todo: Slide mit 3D-PLot SGD
-    \end{itemize}
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.65\textwidth]{./images/six-hump-camel-function-crop.pdf}
+    \end{figure}
 \end{frame}
 
 \section{Interesse?}
@@ -219,8 +239,9 @@
             \href{https://www.deeplearningbook.org}{www.deeplearningbook.org}
             \item \textbf{TensorFlow} \newline
             \href{https://www.tensorflow.org}{www.tensorflow.org}
+            \item \textbf{SFU} Virtual Library of Simulation Experiments: Test Functions and Datasets \newline
+            \href{http://www.sfu.ca/~ssurjano/camel6.html}{http://www.sfu.ca}
             \item And of course wikipedia for quick look ups \newline
-            
         \end{itemize}
         \item Tools used:
         \begin{itemize}
