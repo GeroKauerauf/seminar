@@ -1,11 +1,10 @@
 \section{Feedforward Networks}
-\emph{Deep feedforward networks}, also called \emph{feedforward neural networks} or \emph{multilayer perceptrons} (MLPs) are are basic deep learning models.
+\emph{Deep feedforward networks}, also called \emph{feedforward neural networks} or \emph{multilayer perceptrons} (MLPs) are basic deep learning models.
 Their main purpose is to approximate some kind of function \(f^*(x)\).
 Take for example a classification function \(y = f^*(x)\), where every input \(x\) maps to a class \(y\).
 A feedforward network now aims to learn the best parameters \(\Theta\) for a function \(y = f(x, \Theta)\) that approximates \(f^*(x)\).
 
 These models are \emph{networks} due to the fact that they can be represented by \emph{directed graphs}.
-One of those \emph{graphs} models the consecutive execution of functions whose composition is \(f\).
 They are called \emph{feedforward networks} because the input \(x\) flows through these functions without any \emph{feedback} connections.
 This means that the graph is \emph{acyclic}.
 If the graph is \emph{not acyclic} and therefore \(feedback\) connections exist, we speak of \emph{recurrent neural networks}.
@@ -25,9 +24,9 @@ As proposed earlier we can also think of \emph{neural networks} as \emph{acyclic
 Loosely inspired by neuroscience, \emph{neurons} are interpreted as \emph{nodes} and \emph{synapses} as \emph{edges}.
 Each \emph{node} now receives input from an arbitrary amount of neurons in the previous layer and computes an output with its own activation function.
 An \emph{edges} on the other hand has a scalar \emph{weight}.
-These \emph{weights} are now what can be adjusted to changed the output of the neural network.
+These \emph{weights} are now what can be adjusted to change the output of the neural network.
 
-It is shown that in most feedforward networks a \emph{rectifier linear units} (reLU) (\(f(x) = \text{max}(0, x)\)) activation function works best. \cite{Nair-Hinton} \cite{inproceedings}
+It is shown in  \cite{Nair-Hinton}, \cite{inproceedings}, that in most feedforward networks a \emph{rectifier linear units} (reLU) (\(f(x) = \text{max}(0, x)\)) activation function works best.
 However, in certain cases other activation functions might perform better.
 Such would be for example the \emph{swish} activation function (\(f(x) = x * \text{sigmoid}(x)\)), that tends to perform better than reLU on deeper models. \cite{DBLP:journals/corr/abs-1710-05941}
 

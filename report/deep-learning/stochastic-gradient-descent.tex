@@ -9,7 +9,7 @@ Suppose we have a function \(f : \mathbb{R}^2 \rightarrow \mathbb{R}\) that is d
 For any point \(x_0\) we can evaluate its derivative \(f^{\prime}(x_0)\).
 And since the derivative describes the slope of the function, it tells us if we have to increase or decrease \(x_0\) in order to make \(f(x_0)\) smaller.
 
-Therefore we can reduce \(f(x)\) by taking a small step into the opposite direction of the derivative \cite{cauchy}
+Therefore we can reduce \(f(x)\) by taking a small step into the opposite direction of the derivative \cite{cauchy}, since
 \begin{equation}
     \label{eq:cauchy}
     f(x - \epsilon \; \text{sign}(f^{\prime}(x))) < f(x), \qquad \text{for a small enough } \epsilon.
@@ -47,7 +47,7 @@ expandes the gradient descent algorithm to arbitrary dimension. This is also cal
 Notice that we have to calculate the gradient for each step.
 For functions that take a lot of inputs (e.g. DNNs), this is very expensive.
 
-\paragraph{Stochastic gradient descent} takes, as its name proposes, a stochastic approch to avoid the complete calculation of the gradient for functions that can be expressed a sum.
+\paragraph{Stochastic gradient descent} takes, as its name proposes, a stochastic approch to avoid the complete calculation of the gradient for functions that can be expressed as a sum.
 
 In the context of training DNNs we often have \emph{loss} functions that decompose into sums.
 For example \emph{least squares estimation} essentially describes the sum \(\sum^{n}_{i = 1} (f(x_i) - \tilde{f}(x_i))^2\).
