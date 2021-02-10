@@ -2,4 +2,35 @@
 \label{sec:cost-functions}
 
 A very important aspect of neural networks is the choice of a cost function.
-In most cases we can make use of \emph{maximum likelihood} principle, because a neural network defines a distribution \(p(y \vert x ; \theta)\).
+In most cases we can make use of \emph{maximum likelihood} principle, from which we can than can derive a good cost function.
+As thoroughly explained by \textbf{Goodfellow et al.} \cite{Goodfellow-et-al-2016}, we know the following: \\
+
+Let \(p_{\text{model}}(\boldsymbol{x}; \boldsymbol{\theta})\) map any configuration \(\boldsymbol{x}\) to a real number that estimated the true probability \(p_{data}(\boldsymbol{x})\).
+Then the maximum likelihood estimator for \(\boldsymbol{\theta}\) is defined by
+\begin{align}
+    \boldsymbol{\theta}_{ML} &= \argmax_{\boldsymbol{\theta}} p_{\text{model}} (\mathbb{X}; \boldsymbol{\theta}) \\
+    &= \argmax_{\boldsymbol{\theta}} \prod^{m}_{i = 1} p_{\text{model}} (\boldsymbol{x}^{(i)}; \boldsymbol{\theta})
+\end{align}
+We can the take the logarithm of this product to obtain a convenient sum, that is less prone to numerical underflow.
+\begin{equation}
+    \boldsymbol{\theta}_{\textbf{ML}} = \argmax_{\boldsymbol{\theta}} \sum^{m}_{i = 1} \log p_{\text{model}} (\boldsymbol{x}^{(i)}; \boldsymbol{\theta})
+\end{equation}
+Dividing this by \(m\) yields
+\begin{equation}
+    \boldsymbol{\theta}_{\textbf{ML}} = \argmax_{\boldsymbol{\theta}} \mathbb{E}_{\fat{x} \sim \hat{p}_{\text{data}}} \log p_{\text{model}} (\boldsymbol{x}; \boldsymbol{\theta}).
+\end{equation}
+
+We can than generalize this to predict \(\boldsymbol{y}\) for a given \(\boldsymbol{x}\) by estimating a conditional probability \(P(\boldsymbol{Y} \vert \fat{x}; \boldsymbol{\theta})\).
+Let \(\boldsymbol{X}\) be our inputs and \(\boldsymbol{Y}\) our observed outputs.
+The conditional maximum likelihood estimator is
+\begin{equation}
+    \boldsymbol{\theta}_{\text{ML}} = \argmax_{\boldsymbol{\theta}} P (\boldsymbol{Y} \vert \boldsymbol{X}; \boldsymbol{\theta}).
+\end{equation}
+This further simplifies to
+\begin{equation}
+    \boldsymbol{\theta} = \argmax_{\boldsymbol{\theta}} \sum^{m}_{i = 1} \log P (\boldsymbol{y}^{(i)} \vert \boldsymbol{x}^{(i)}; \boldsymbol{\theta}),
+\end{equation}
+if we assume that the examples are independent and identically distributed .
+
+This can then for example be used to show that the Mean-Squared-Error (MSE) works really well for linear regression.
+
