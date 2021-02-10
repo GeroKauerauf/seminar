@@ -1,4 +1,6 @@
 \section{Feedforward Networks}
+\label{sec:feedforward-networks}
+
 \emph{Deep feedforward networks}, also called \emph{feedforward neural networks} or \emph{multilayer perceptrons} (MLPs) are basic deep learning models.
 Their main purpose is to approximate some kind of function \(f^*(x)\).
 Take for example a classification function \(y = f^*(x)\), where every input \(x\) maps to a class \(y\).
@@ -53,12 +55,12 @@ For \fref{fig:dnn-example} the weight matrices are
 \end{equation}
 With the corresponding bias vectors
 \begin{equation}
-    b^{(0)} =
+    \fat{b}^{(0)} =
     \begin{pmatrix}
         w_{0}^{(0)} \\
         w_{1}^{(0)}
     \end{pmatrix}, \quad
-    b^{(1)} =
+    \fat{b}^{(1)} =
     \begin{pmatrix}
         w_{0}^{(1)}
     \end{pmatrix}.
@@ -68,7 +70,7 @@ This bias node always has an input of \(1\) and describes the constant in a line
 
 Let \(f(x)\) now be the activation function and
 \begin{equation}
-    x =
+    \fat{x} =
     \begin{pmatrix}
         x_0 \\
         x_1
@@ -77,7 +79,7 @@ Let \(f(x)\) now be the activation function and
 the input vector.
 The output vector for \fref{fig:dnn-example} can be calculated by evaluating the following equations.
 \begin{equation}
-    x_0 =
+    \fat{x}^{(0)} =
     f(W^{(0)}x + b^{0}) =
     f(
     \begin{pmatrix}
@@ -86,7 +88,7 @@ The output vector for \fref{fig:dnn-example} can be calculated by evaluating the
     \end{pmatrix}
     \begin{pmatrix}
         x_0 \\
-        x_1å
+        x_1
     \end{pmatrix}
     +
     \begin{pmatrix}
@@ -96,13 +98,13 @@ The output vector for \fref{fig:dnn-example} can be calculated by evaluating the
     )
 \end{equation}
 \begin{equation}
-    y =
-    f(W^{(1)}x_0 + b^{1}) =
+    \fat{y} =
+    f(W^{(1)}\fat{x}^{(0)}+ b^{1}) =
     f(
     \begin{pmatrix}
         w_{1}^{(1)} & w_{2}^{(1)}
     \end{pmatrix}
-    x_0
+    \fat{x}^{(0)}
     +
     \begin{pmatrix}
         w_{0}^{(1)}
