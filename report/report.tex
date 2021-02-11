@@ -24,7 +24,7 @@
 \usepackage{csquotes}
 
 \usepackage{fontspec}
-% \setmonofont{Roboto Mono} sadly, does not look good
+% \setmonofont{Roboto Mono} % sadly, does not look good
 \usepackage{minted}
 
 % Draw neural network
@@ -33,6 +33,8 @@
 \usepackage{fancyref}
 \let\oldfref\fref
 \renewcommand{\fref}[1]{[\oldfref{#1}]}
+
+% \raggedbottom % add to allow whitespace on end of pages and not evenly distribute text
 
 %---------- Ich bin ein verdammter Künstler ----------
 \usepackage{listings}

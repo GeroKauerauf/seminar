@@ -70,4 +70,21 @@ It is of great importance that \texttt{op.back\_prop} always pretends that all o
 Take for example the function \(x^2\) the \texttt{back\_prop} should now for both inputs return \(x\).
 It will later add those two \(x\) together to receive the correct derivate of \(2x\).
 
-By making use of the \texttt{back\_prop} function like this, we receive a very general back-propagation algorithm.
+By making use of the \texttt{back\_prop} function like this, we receive a very general back-propagation algorithm. \\
+
+\paragraph{Back-Propagation example.}
+With the Back-propagation we can determine the gradient of \fref{fig:back-prop-example} easily.
+\input{./deep-learning/back-propagation-example.tex}
+This means that \(x = f(w), v = f(w), y = g(x,v), z = f(y)\).
+Therefore
+\begin{equation}
+    z = f\Big( g \big( f(w),f(w) \big) \Big).
+\end{equation}
+If we now want to compute \(\frac{\partial z}{\partial w}\), we can do so by applying the chain rule of calculus recursively.
+It follows that
+\begin{align}
+    \frac{\partial z}{\partial w} &= \frac{\partial z}{\partial y} \Bigg( \frac{\partial y}{\partial x} \frac{\partial x}{\partial w} + \frac{\partial y}{\partial v} \frac{\partial v}{\partial w} \Bigg) \label{eq:back-prop-example} \\
+    &= \frac{\partial z}{\partial y} \Bigg( \frac{\partial y}{\partial x} + \frac{\partial y}{\partial v} \Bigg) \frac{\partial x}{\partial w}, \quad \text{because } \frac{\partial x}{\partial w} = \frac{\partial v}{\partial w} \\
+    &= f^\prime (w) \cdot \Big( g^{(1,0)} \big( f(w), f(w) \big) + g^{(0,1)} \big( f(w), f(w) \big) \Big) \cdot f^\prime \big( f(w), f(w)\big).
+\end{align}
+Where \fref{eq:back-prop-example} describes, what the back-propagation algorithm would do.

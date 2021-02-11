@@ -2,6 +2,7 @@
 \label{sec:stochastic-gradient-descent}
 \emph{Stochastic gradient descent} (SGD) is the main \emph{optimization algorithm} that is used in \emph{deep learning}.
 In \emph{TensorFlow} many of the \emph{optimizers} that come within \emph{keras} are based on the SGD algorithm.
+As mentioned earlier, the optimizing algorithm is what \enquote{really} trains the network by updating the weights.
 
 The underlying gradient descent is an iterative optimization algorithm.
 Its main idea is to start at an arbitrary point and from there on step into a direction the that minimizes the function value.
@@ -78,3 +79,4 @@ where \(\eta\) describes the step size, however in the context of deep learning 
     }
     \caption{Stochastic gradient descent}
 \end{algorithm}
+The SGD algorithm does not only allow more efficient training, but furthermore allows use to train an existing model, which is possible due to the minibatch procedure.
