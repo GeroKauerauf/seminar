@@ -33,9 +33,9 @@ If \(\fat{y} = g(\fat{x})\) and \(z = f(g(\fat{x})) = f(\fat{y})\), then
 Using the \(\nabla\) operator for the gradient, this can also be written as
 \begin{equation}
     \label{eq:jacobian-vector-product}
-    \nabla_{\fat{x}} z = \bigg( \frac{\partial \fat{y}}{\fat{x}} \bigg)^{T} \nabla_{\fat{y}} z,
+    \nabla_{\fat{x}} z = \bigg( \frac{\partial \fat{y}}{\partial \fat{x}} \bigg)^{T} \nabla_{\fat{y}} z,
 \end{equation}
-where \(\frac{\partial \fat{y}}{\partial x}\) is the \(n \times m\) Jacobian of \(g\).
+where \(\frac{\partial \fat{y}}{\partial \fat{x}}\) is the \(n \times m\) Jacobian of \(g\).
 Since feedforward networks often work with tensors of arbitrary dimension and not vectors, we would have to change our notation a bit in order to deal with them.
 We would simply \enquote{flatten} the tensor and use multiple coordinates as indices for the dimensions.
 However I am not going to introduce this here, since the concept can already be understood with vectors. \\
