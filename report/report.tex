@@ -24,7 +24,7 @@
 \usepackage{csquotes}
 
 \usepackage{fontspec}
-\setmonofont{Roboto Mono}
+% \setmonofont{Roboto Mono} sadly, does not look good
 \usepackage{minted}
 
 % Draw neural network
@@ -59,7 +59,7 @@
 \def\UrlBreaks{\do\/\do-}
 % -------------------------------
 
-\newcommand{\fat}[1]{\textbf{#1}}
+\newcommand{\fat}[1]{\mathbf{#1}}
 \DeclareMathOperator*{\argmax}{arg\,max}
 \DeclareMathOperator*{\argmin}{arg\,min}
 
