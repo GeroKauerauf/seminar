@@ -41,8 +41,15 @@ ax.zaxis.set_major_locator(LinearLocator(10))
 ax.zaxis.set_major_formatter(FormatStrFormatter('%.02f'))
 
 # Add a color bar which maps values to colors.
-fig.colorbar(surf, shrink=0.5, aspect=5)
+# fig.colorbar(surf, shrink=0.5, aspect=5)
 
-# plt.savefig("six-hump-camel-function.pdf", bbox_inches='tight')
+ax.set_xticklabels([])
+ax.set_yticklabels([])
+ax.set_zticklabels([])
+ax.set_xticks([])
+ax.set_yticks([])
+ax.set_zticks([])
+
+% plt.savefig("six-hump-camel-function.eps", bbox_inches='tight')
 
 plt.show()

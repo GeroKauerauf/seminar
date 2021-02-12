@@ -16,10 +16,7 @@ Therefore we can reduce \(f(x)\) by taking a small step into the opposite direct
     \label{eq:cauchy}
     f(x - \epsilon \; \text{sign}(f^{\prime}(x))) < f(x), \qquad \text{for a small enough } \epsilon.
 \end{equation}
-
-% Todo make graphic that shows x^2 and 2x and their correlation
-
-What is shown in (fref figure above todo) and \fref{eq:cauchy} can of course be expanded to \(\mathbb{R}^n\).
+In the following, we will expand this beyond the \(2\)-dimensional case, so that it can be used for neural networks of arbitrary size.
 
 Let \(x \in \mathbb{R}^n\) and \(f : \mathbb{R}^n \rightarrow \mathbb{R}^m\).
 The directional derivative of \(f\) in direction \(u\), a unit vector, is the slope of \(f\) in direction \(u\).
@@ -79,4 +76,16 @@ where \(\eta\) describes the step size, however in the context of deep learning 
     }
     \caption{Stochastic gradient descent}
 \end{algorithm}
-The SGD algorithm does not only allow more efficient training, but furthermore allows use to train an existing model, which is possible due to the minibatch procedure.
+The SGD algorithm does not only allow more efficient training, but furthermore to train an existing model, which is possible due to the minibatch procedure.
+
+\begin{figure}[H]
+    \label{fig:six-hump-camel-function}
+    \centering
+    \includegraphics*[width=0.8\textwidth]{./deep-learning/six-hump-camel-function-resized.eps}
+    \caption{Plot of the six hump camel function: \( f(\fat{x}) = \Bigg( 4 - 2.1 x^{2}_{1} + \frac{x^{4}_{1}}{3} \Bigg) x^{2}_{1} + x_{1}x_{2} + (-4 + 4x^{2}_{2}) x^{2}_{2} \)}
+\end{figure}
+In \fref{fig:six-hump-camel-function} we see a non linear \(3\)-dimensional function, with global and local minima.
+The difference between gradient descent and its stochastic extension can be easily visualized.
+Gradient descent always finds the shortest, steepest path, whereas SGD takes a longer path with many turns.
+A great analogy is one of a drunken man, who tries to find his way down from a mountain into a valley.
+Gradient descent would then be a sober man.

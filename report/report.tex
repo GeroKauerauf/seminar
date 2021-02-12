@@ -14,9 +14,6 @@
 
 \numberwithin{equation}{subsection} % numbers on equations
 
-% \usepackage{graphicx}\usepackage{draftwatermark}
-% \SetWatermarkText{\textsc{Draft}}
-
 % -------------------- My Packages -------------------- %
 \usepackage{hyperref}
 \usepackage{xcolor}
@@ -33,6 +30,14 @@
 \usepackage{fancyref}
 \let\oldfref\fref
 \renewcommand{\fref}[1]{[\oldfref{#1}]}
+
+\usepackage{draftwatermark}
+\usepackage{datetime2}
+\SetWatermarkText{Draft: \DTMnow}
+% \SetWatermarkColor[gray]{0.5}
+\SetWatermarkFontSize{1cm}
+\SetWatermarkAngle{90}
+\SetWatermarkHorCenter{20cm}
 
 % \raggedbottom % add to allow whitespace on end of pages and not evenly distribute text
 
