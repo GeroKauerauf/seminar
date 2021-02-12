@@ -9,6 +9,7 @@ We had to hold 3 talks and write 1 paper
 - Sell (15 min)
 
 Where each presentation had its very own character
+
 Finally we had to write an report/paper of appr. 10 pages
 
 For more information on the structure visit <a href="https://www.stce.rwth-aachen.de/teaching/seminars-1/seminars" target="_blank">**Seminar - General Information**</a>
