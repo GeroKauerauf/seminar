@@ -3,13 +3,13 @@
 
 Often mistaken for the whole learning algorithm, 
 back-propagation just refers to the algorithm for computing the gradient of a computational graph.
-It is called back-propagation because we evaluate the gradient for the output layer backwards to the input layer.
-In some way it can be understood as a counter part to the forward propagation.
+It is called back-propagation because we evaluate the gradient for the output layer back to the input layer.
+In some way, it can be understood as a counter part to the forward propagation.
 As already discussed, forward propagation describes the process of calculating the output \(\hat{\fat{y}}\) of a feedforward network for a given input \(\fat{x}\).
 Back-propagation on the other hand now works it way from the output layer to the input layer in order to compute the gradient for a given input \(\fat{x}\), a calculated output \(\hat{\fat{y}}\) and
 a \enquote{wanted} output \(\fat{y}\).
 
-A common misbelief, is that the back-propagation is performed on the feedforward network itself, whereas it is rather done on the computational graph of the cost function.
+A common misbelief is that the back-propagation is performed on the feedforward network itself, whereas it is rather done on the computational graph of the cost function.
 Optimizing the \emph{weights} in the graph of the cost function also optimizes them in the network!
 Since the back-propagation only computes the gradient, the \enquote{real} learning is performed by an \emph{optimizing} algorithm, such as \emph{stochastic gradient descent} \fref{sec:stochastic-gradient-descent}.
 
@@ -36,15 +36,15 @@ Using the \(\nabla\) operator for the gradient, this can also be written as
     \nabla_{\fat{x}} z = \bigg( \frac{\partial \fat{y}}{\partial \fat{x}} \bigg)^{T} \nabla_{\fat{y}} z,
 \end{equation}
 where \(\frac{\partial \fat{y}}{\partial \fat{x}}\) is the \(n \times m\) Jacobian of \(g\).
-Since feedforward networks often work with tensors of arbitrary dimension and not vectors, we would have to change our notation a bit in order to deal with them.
+Since feedforward networks often work with tensors of arbitrary dimension and not vectors, we would have to change our notation a bit to deal with them.
 We would simply \enquote{flatten} the tensor and use multiple coordinates as indices for the dimensions.
-However I am not going to introduce this here, since the concept can already be understood with vectors. \\
+However, I am not going to introduce this here, since the concept can already be understood with vectors. \\
 
 The general idea of the back-propagation algorithm is simple.
 If we want to compute the gradient of \(z\) with respect to \(x\) we start at the node \(z\).
 We observe that the gradient of \(z\) with respect to \(z\) is \(1\), since \(\frac{\partial z}{\partial z} = 1\).
 We then compute the gradient with respect to each parent of \(z\) by multiplying the current gradient by the Jacobian that produced \(z\).
-This means we propagate backwards through the network by multiplying with Jacobians until we reach \(x\).
+This means we propagate backward through the network by multiplying with Jacobians until we reach \(x\).
 If there are multiple paths, we simply take them each after another.
 
 More formally this means that each node in the computational graph corresponds to a variable (in our case a vector).

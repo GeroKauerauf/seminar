@@ -35,10 +35,10 @@ Such would be for example the \emph{swish} activation function (\(f(x) = x * \te
 % Small sample neural network graph
 \input{feedforward-networks/neural-network-example.tex}
 
-This DNN \fref{fig:dnn-example} can now also be described by its \emph{weight matrices}. 
+This DNN \fref{fig:dnn-example} can be described by its \emph{weight matrices}.
 
-We can represent the weights of the edges between two layers as a \emph{weight matrices} \(\fat{W} \in \mathbb{R}^{m \times n}\).
-The input can be represented as a vector \({x \in \mathbb{R}^n}\).
+We can store the weights of the edges between two layers as a \emph{weight matrix} \(\fat{W} \in \mathbb{R}^{m \times n}\).
+The input can then be represented as a vector \({x \in \mathbb{R}^n}\).
 Calculating the output of a neural network can therefore be achieved by iterative \emph{matrix-vector multiplication} and component-wise usage of the activation function on each layer.
 
 For \fref{fig:dnn-example} the weight matrices are
