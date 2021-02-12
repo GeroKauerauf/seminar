@@ -4,9 +4,10 @@
 > Take a look at <a href="https://www.stce.rwth-aachen.de/teaching/winter-semester-2020-21/algorithmic-differentiation-seminar" target="_blank">**stce.rwth-aachen.de**</a> | i12 STCE RWTH
 
 We had to hold 3 talks and write 1 paper
-- Proposal/Motivate talk (10 min)
+- Proposal/Motivate (10 min)
 - Teach (15 min)
 - Sell (15 min)
+
 Where each presentation had its very own character
 Finally we had to write an report/paper of appr. 10 pages
 
