@@ -9,16 +9,17 @@ A feedforward network now aims to learn the best parameters \(\Theta\) for a fun
 These models are \emph{networks} due to the fact that they can be represented by \emph{directed graphs}.
 They are called \emph{feedforward networks} because the input \(x\) flows through these functions without any \emph{feedback} connections.
 This means that the graph is \emph{acyclic}.
-If the graph is \emph{not acyclic} and therefore \(feedback\) connections exist, these are called \emph{recurrent neural networks}.
+If the graph is \emph{not acyclic} and therefore \(feedback\) connections exist, we have a \emph{recurrent neural networks}.
 
 For example let \(f(x) = (f^3 \circ f^2 \circ f^1)(x) = f^3(f^2(f^1(x)))\).
 We now define the \emph{depth} of a \emph{feedforward network} \(f\) as the number of functions that it is composed of.
 Our example has a \emph{depth} of \(3\).
 These kinds of chains are very typical in \emph{neural networks}, as each function in the chain represents a layer in the \emph{directed acyclic graph}.
-The last element of the chain (in our example \(f^1\)) and therefore the last layer in the graph is called the \emph{output layer} as it maps the input \(x\) to its final value.
-If we think of \(f\) as a classifier function the elements of the \emph{codomain} of \(f^1\) are the classes.
-Likewise, the elements of the \emph{domain} of the first function in the chain (in our example \(f^3\)) are the inputs of the network.
-The first layer is called \emph{input layer}.
+The \emph{domain} of the first function in the chain (in our example \(f^1\)) defines the inputs of the network.
+The corresponding first layer is therefore called \emph{input layer}.
+Likewise, the last function in the chain (in our example \(f^3\)) maps the input to its final value.
+The last layer is therefore called \emph{output layer}.
+If we think of \(f\) as a classifier function the elements of the \emph{codomain} of \(f^3\) are the classes.
 Layers between the \emph{input} and \emph{output} layer are called \emph{hidden layers}.
 
 \subsection{Feedforward network graphs}
@@ -80,7 +81,7 @@ the input vector.
 The output vector for \fref{fig:dnn-example} can be calculated by evaluating the following equations.
 \begin{equation}
     \fat{x}^{(0)} =
-    f(W^{(0)}x + b^{0}) =
+    f(W^{(0)}x + b^{(0)}) =
     f(
     \begin{pmatrix}
         w_{2}^{(0)} & w_{4}^{(0)} \\
@@ -99,7 +100,7 @@ The output vector for \fref{fig:dnn-example} can be calculated by evaluating the
 \end{equation}
 \begin{equation}
     \hat{\fat{y}} =
-    f(W^{(1)}\fat{x}^{(0)}+ b^{1}) =
+    f(W^{(1)}\fat{x}^{(0)}+ b^{(1)}) =
     f(
     \begin{pmatrix}
         w_{1}^{(1)} & w_{2}^{(1)}

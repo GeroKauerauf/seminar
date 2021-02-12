@@ -66,6 +66,7 @@ Formally the call of \texttt{op.back\_prop(parents(..), \(\fat{V}\), \(\fat{g}\)
 \end{equation}
 where \texttt{op.f} is the mathematical relation (e.g. matrix multiplication).
 The two dots in the call of the \texttt{parent(..)} function refer to the current node we are at.
+
 It is of great importance that \texttt{op.back\_prop} always pretends that all of its inputs are distinct.
 If the multiplication operator \(\text{mul}(a,b) = a \cdot b\), gets \(x\) for both inputs, and therefore computes \(\text{mul}(x,x)= x \cdot x = x^2\), 
 \texttt{back\_prop} should for both inputs return \(x\).

@@ -12,7 +12,7 @@ Then the maximum likelihood estimator for \(\boldsymbol{\theta}\) is defined by
     &= \argmax_{\boldsymbol{\theta}} \prod^{m}_{i = 1} p_{\text{model}} (\boldsymbol{x}^{(i)}; \boldsymbol{\theta}),
 \end{align}
 where \(\mathbb{X}\) is a random variable, and \(\boldsymbol{x}^{(i)}\) is an observed outcome of it.
-We can the take the logarithm of this product to obtain a convenient sum, that is less prone to numerical underflow.
+We can take the logarithm of this product to obtain a convenient sum, that is less prone to numerical underflow.
 \begin{equation}
     \boldsymbol{\theta}_{\textbf{ML}} = \argmax_{\boldsymbol{\theta}} \sum^{m}_{i = 1} \log p_{\text{model}} (\boldsymbol{x}^{(i)}; \boldsymbol{\theta})
 \end{equation}
