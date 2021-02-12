@@ -11,10 +11,10 @@ a \enquote{wanted} output \(\fat{y}\).
 
 A common misbelief is that the back-propagation is performed on the feedforward network itself, whereas it is rather done on the computational graph of the cost function.
 Optimizing the \emph{weights} in the graph of the cost function also optimizes them in the network!
-Since the back-propagation only computes the gradient, the \enquote{real} learning is performed by an \emph{optimizing} algorithm, such as \emph{stochastic gradient descent} \fref{sec:stochastic-gradient-descent}.
+Since the back-propagation only computes the gradient, the \enquote{real} learning is performed by an \emph{optimizing algorithm}, such as \emph{stochastic gradient descent} \fref{sec:stochastic-gradient-descent}.
 
 \paragraph{Chain Rule of Calculus.}
-The chain rule of calculus describes how to calculate the derivative of a function that is composed of other functions.
+The chain rule of calculus describes how to calculate the derivative of a function that is composed out of other functions.
 Let \(f: \mathbb{R} \rightarrow \mathbb{R}\) and \(g: \mathbb{R} \rightarrow \mathbb{R}\) both be differentiable.
 If \(y = g(x)\) and \(z = f(y) = f(g(x))\), then
 \begin{equation}
@@ -44,8 +44,8 @@ The general idea of the back-propagation algorithm is simple.
 If we want to compute the gradient of \(z\) with respect to \(x\) we start at the node \(z\).
 We observe that the gradient of \(z\) with respect to \(z\) is \(1\), since \(\frac{\partial z}{\partial z} = 1\).
 We then compute the gradient with respect to each parent of \(z\) by multiplying the current gradient by the Jacobian that produced \(z\).
-This means we propagate backward through the network by multiplying with Jacobians until we reach \(x\).
-If there are multiple paths, we simply take them each after another.
+This means we propagate backward through the graph by multiplying with Jacobians until we reach \(x\).
+If there are multiple paths, we simply take them one after another.
 
 More formally this means that each node in the computational graph corresponds to a variable (in our case a vector).
 Each variable \(\fat{v}\) has now the following subroutines:
@@ -59,7 +59,7 @@ Furthermore every operation \texttt{op} is associated with a \texttt{back\_prop}
 Let \(\fat{C} = \fat{AB}\), and the gradient of a scalar \(z\) with respect to \(\fat{C}\) be \(\fat{g} \in \mathbb{R}^n\).
 Then \texttt{back\_prop} has to define the gradient of matrix multiplication for \(\fat{A}\) and \(\fat{B}\).
 This means that \texttt{op.back\_prop(parents(..), \(\fat{A}\), \(\fat{g}\))} evaluates to \(\fat{g}\fat{B}^T \in \mathbb{R}^n\), because \(\frac{\partial \fat{C}}{\partial \fat{A}} = \fat{B}^T\).
-Analogously, the call of \texttt{op.back\_prop(parents(..), \(\fat{B}\), \(\fat{g}\))} evaluates to \(\fat{A}^T\fat{g} \in \mathbb{R}^n\).
+Correspondingly, the call of \texttt{op.back\_prop(parents(..), \(\fat{B}\), \(\fat{g}\))} evaluates to \(\fat{A}^T\fat{g} \in \mathbb{R}^n\).
 Formally the call of \texttt{op.back\_prop(parents(..), \(\fat{V}\), \(\fat{g}\))} returns
 \begin{equation}
     \sum_{i} \big( \nabla_{\fat{V}} \texttt{op.f(parents(..))}_{i} \fat{G}_{i} \big),
@@ -67,13 +67,14 @@ Formally the call of \texttt{op.back\_prop(parents(..), \(\fat{V}\), \(\fat{g}\)
 where \texttt{op.f} is the mathematical relation (e.g. matrix multiplication).
 The two dots in the call of the \texttt{parent(..)} function refer to the current node we are at.
 It is of great importance that \texttt{op.back\_prop} always pretends that all of its inputs are distinct.
-Take for example the function \(x^2\) the \texttt{back\_prop} should now for both inputs return \(x\).
+If the multiplication operator \(\text{mul}(a,b) = a \cdot b\), gets \(x\) for both inputs, and therefore computes \(\text{mul}(x,x)= x \cdot x = x^2\), 
+\texttt{back\_prop} should for both inputs return \(x\).
 It will later add those two \(x\) together to receive the correct derivate of \(2x\).
 
 By making use of the \texttt{back\_prop} function like this, we receive a very general back-propagation algorithm. \\
 
 \paragraph{Back-Propagation example.}
-With the Back-propagation we can determine the gradient of \fref{fig:back-prop-example} easily.
+With the back-propagation we can determine the gradient of \fref{fig:back-prop-example} easily.
 \input{./deep-learning/back-propagation-example.tex}
 This means that \(x = f(w), v = f(w), y = g(x,v), z = f(y)\).
 Therefore

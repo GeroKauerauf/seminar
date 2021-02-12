@@ -1,12 +1,11 @@
 \section{Conclusion}
 \label{sec:conclusion}
 
-Neural networks are used because they are doing what other algorithms struggle with.
-For certain problem classes, they are the best we currently have.
-It is not a question of choice either, since there is simply no good alternative to them.
-However, we should keep in mind that they should not be \enquote{over-used}.
-For problems for which we have good algorithms, we do not need neural networks.
-
-A real problem with neural networks however is their practical nature.
+We have elaborated on the structure of feedforward networks and the \emph{linear algebra} behind forward propagation.
+From there we have taken a look at the maximum likelihood principle, that helps us with finding a good cost function.
+The gradient of the cost function can then be computed with the back-propagation algorithm.
+This gradient can then be passed to an optimizer such as stochastic gradient descent, that adjusts the weights in order to minimize the error of the DNN.
+However, this is just the theoretical side of things.
+A real problem with neural networks is their practical nature.
 It is often a \enquote{trial and error} to determine what works well.
 Theoretically analyzing why it works well, is most of the time incredibly laborious and very complex.

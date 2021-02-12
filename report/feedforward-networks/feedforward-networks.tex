@@ -9,12 +9,12 @@ A feedforward network now aims to learn the best parameters \(\Theta\) for a fun
 These models are \emph{networks} due to the fact that they can be represented by \emph{directed graphs}.
 They are called \emph{feedforward networks} because the input \(x\) flows through these functions without any \emph{feedback} connections.
 This means that the graph is \emph{acyclic}.
-If the graph is \emph{not acyclic} and therefore \(feedback\) connections exist, we speak of \emph{recurrent neural networks}.
+If the graph is \emph{not acyclic} and therefore \(feedback\) connections exist, these are called \emph{recurrent neural networks}.
 
 For example let \(f(x) = (f^3 \circ f^2 \circ f^1)(x) = f^3(f^2(f^1(x)))\).
-We now define the \emph{depth} of a \emph{feedforward network} \(f\) as the number of functions that compose it.
+We now define the \emph{depth} of a \emph{feedforward network} \(f\) as the number of functions that it is composed of.
 Our example has a \emph{depth} of \(3\).
-These kind of chains are very typical in \emph{neural networks}, as each function in the chain represents a layer in the \emph{directed acyclic graph}.
+These kinds of chains are very typical in \emph{neural networks}, as each function in the chain represents a layer in the \emph{directed acyclic graph}.
 The last element of the chain (in our example \(f^1\)) and therefore the last layer in the graph is called the \emph{output layer} as it maps the input \(x\) to its final value.
 If we think of \(f\) as a classifier function the elements of the \emph{codomain} of \(f^1\) are the classes.
 Likewise, the elements of the \emph{domain} of the first function in the chain (in our example \(f^3\)) are the inputs of the network.
@@ -25,19 +25,19 @@ Layers between the \emph{input} and \emph{output} layer are called \emph{hidden 
 As proposed earlier we can also think of \emph{neural networks} as \emph{acyclic directed graphs}.
 Loosely inspired by neuroscience, \emph{neurons} are interpreted as \emph{nodes} and \emph{synapses} as \emph{edges}.
 Each \emph{node} now receives input from an arbitrary amount of neurons in the previous layer and computes an output with its own activation function.
-An \emph{edges} on the other hand has a scalar \emph{weight}.
-These \emph{weights} are now what can be adjusted to change the output of the neural network.
+An \emph{edge} on the other hand has a scalar \emph{weight}.
+These \emph{weights} can be adjusted to change the output of the neural network.
 
 It is shown in  \cite{Nair-Hinton}, \cite{inproceedings}, that in most feedforward networks a \emph{rectifier linear units} (reLU) (\(f(x) = \text{max}(0, x)\)) activation function works best.
 However, in certain cases other activation functions might perform better.
-Such would be for example the \emph{swish} activation function (\(f(x) = x * \text{sigmoid}(x)\)), that tends to perform better than reLU on deeper models. \cite{DBLP:journals/corr/abs-1710-05941}
+Such a case for example would be the \emph{swish} activation function (\(f(x) = x * \text{sigmoid}(x)\)), that tends to perform better than reLU on deeper networks \cite{DBLP:journals/corr/abs-1710-05941}.
 
 % Small sample neural network graph
 \input{feedforward-networks/neural-network-example.tex}
 
-This DNN \fref{fig:dnn-example} can be described by its \emph{weight matrices}.
+The network shown in \fref{fig:dnn-example} can be described by its \emph{weight matrices}.
 
-We can store the weights of the edges between two layers as a \emph{weight matrix} \(\fat{W} \in \mathbb{R}^{m \times n}\).
+We can store the weights of the edges between two layers in a single \emph{weight matrix} \(\fat{W} \in \mathbb{R}^{m \times n}\).
 The input can then be represented as a vector \({x \in \mathbb{R}^n}\).
 Calculating the output of a neural network can therefore be achieved by iterative \emph{matrix-vector multiplication} and component-wise usage of the activation function on each layer.
 
